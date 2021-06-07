@@ -1,1 +1,128 @@
-/Users/imanau/.config/nvim/dein.toml
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]] # カーソル位置のコンテキストに合わせてftを切り替える
+repo = 'osyo-manga/vim-precious'
+depends = ['context_filetype.vim']
+
+[[plugins]] # カーソル位置のコンテキストのftを判定するライブラリ
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]] # toml syntax
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+[[plugins]] # カラースキーマ
+repo = 'w0ng/vim-hybrid'
+hook_add = '''
+  set background=dark
+  " colorscheme 設定は source 後に行う必要があるので VimEnter で行う。
+  " 但し Colorscheme イベントの発生が抑制されないよう nented を付ける。
+  au MyAutoCmd VimEnter * nested colorscheme hybrid
+'''
+
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+rev = 'release'
+build = '''
+  git checkout release
+'''
+hook_add = '''
+  inoremap <silent><expr> <TAB>
+        \ pumvisible() ? "\<C-n>" :
+        \ <SID>check_back_space() ? "\<TAB>" :
+        \ coc#refresh()
+  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+  function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+  endfunction
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gy <Plug>(coc-type-definition)
+  nmap <silent> gi <Plug>(coc-implementation)
+  nmap <silent> gr <Plug>(coc-references)
+'''
+# 例えば絵文字のインストール :CocInstall coc-emoji
+# すでにインストールしているもの
+# :CocInstall coc-python
+# :CocInstall cos-json
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+
+[[plugins]]
+repo = 'tpope/vim-commentary'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+# 先にpowerlinesフォントを入れておく必要がある
+# あとターミナルの見た目は、NerdfontsをインストールしてSauce Code Pro Nerd Font Completeが良い感じ
+# https://blog.htkyama.org/vim_airline
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+# nerd-fontをインストールして、terminalで設定する必要がある。
+# ファイラーでアイコンを表示する設定
+
+[[plugins]]
+repo = 'kristijanhusak/defx-icons'
+
+[[plugins]]
+# チートシート
+repo = 'reireias/vim-cheatsheet'
+# let g:cheatsheet#cheat_file = '~/.config/nvim/cheatsheet.md'
+
+[[plugins]]
+repo = 'simeji/winresizer'
+
+[[plugins]]
+# vimでgit操作ができるやつ
+repo = 'tpope/vim-fugitive'
+
+# ファイラー
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+# python3.6.1以上が必要
+# pip3 install --user pynvim も必要
+# :UpdateRemotePlugins　コマンドも実行が必要
+[[plugins]]
+repo = 'roxma/nvim-yarp'
+if = '''! has('nvim')'''
+
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
+if = '''! has('nvim')'''
+
+[[plugins]]
+repo= 'jiangmiao/auto-pairs'
+
+# ファイル検索
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+hook_add = '''
+  nnoremap [denite] <Nop>
+  nmap <C-d> [denite]
+  nnoremap <silent> [denite]g :<C-u>Denite grep -buffer-name=search-buffer-denite<CR>
+  nnoremap <silent> [denite]r :<C-u>Denite -resume -buffer-name=search-buffer-denite<CR>
+  nnoremap <silent> [denite]p :<C-u>Denite file_rec<CR>
+  call denite#custom#option('default', 'prompt', '>')
+  call denite#custom#option('_', 'highlight_matched_range', 'None')
+  call denite#custom#option('_', 'highlight_matched_char', 'None')
+  call denite#custom#map('insert', "<Tab>", '<denite:move_to_next_line>')
+  call denite#custom#map('insert', "<S-Tab>", '<denite:move_to_previous_line>')
+  call denite#custom#map('insert', "<C-t>", '<denite:do_action:tabopen>')
+  call denite#custom#map('insert', "<C-v>", '<denite:do_action:vsplit>')
+  call denite#custom#map('normal', "v", '<denite:do_action:vsplit>')
+  call denite#custom#var('grep', 'command', ['pt', '--follow', '--nogroup', '--nocolor', '--hidden'])
+  call denite#custom#var('grep', 'default_opts', [])
+  call denite#custom#var('grep', 'recursive_opts', [])
+  call denite#custom#var('file_rec', 'command', ['pt', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', ''])
+'''
+
