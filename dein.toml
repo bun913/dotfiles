@@ -42,10 +42,17 @@ hook_add = '''
   nmap <silent> gy <Plug>(coc-type-definition)
   nmap <silent> gi <Plug>(coc-implementation)
   nmap <silent> gr <Plug>(coc-references)
+  nmap <silent> rn <Plug>(coc-rename)
+  nmap <silent> <space>l :<C-u>CocList<cr>
+  nmap <silent> <space>h :<C-u>call CocAction('doHover')<cr>
+  nmap <silent> <space>fm <Plug>(coc-format)
+  nnoremap <C-p> :CocList files<CR>
+  nnoremap <C-g> :CocList grep<CR>
 '''
 # 例えば絵文字のインストール :CocInstall coc-emoji
 # すでにインストールしているもの
 # :CocInstall coc-python
+# :CocInstall coc-lists
 # :CocInstall cos-json
 
 [[plugins]]
