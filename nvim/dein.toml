@@ -98,7 +98,10 @@ repo = 'tpope/vim-fugitive'
 repo = 'Shougo/defx.nvim'
 # python3.6.1以上が必要
 # pip3 install --user pynvim も必要
-# :UpdateRemotePlugins　コマンドも実行が必要
+
+# [plugins]]
+# repo = 'kristijanhusak/defx-git'
+
 [[plugins]]
 repo = 'roxma/nvim-yarp'
 if = '''! has('nvim')'''

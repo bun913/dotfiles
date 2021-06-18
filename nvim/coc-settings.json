@@ -4,7 +4,11 @@
   "eslint.autoFixOnSave": true,
   "eslint.format.enable": true,
   "tsserver.enableJavascript": false,
-  "eslint.workingDirectories": [{"mode": "auto"}],
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
   "eslint.validate": [
     "javascript"
   ],
@@ -66,5 +70,6 @@
       ]
     }
   },
-  "python.jediEnabled": false
+  "python.jediEnabled": false,
+  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown"]
 }
