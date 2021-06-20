@@ -49,7 +49,7 @@
   {
     "key": "u",
     "command": "git.stage",
-    "when": "workbench.scm.active"
+    "when": "sideBarFocus && activeViewlet == 'workbench.view.scm'"
   },
   {
     "key": "shift+c",
