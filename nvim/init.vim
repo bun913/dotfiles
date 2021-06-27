@@ -2,7 +2,7 @@
 set number
 set smartindent
 set clipboard=unnamed
-let mapleader = "\<Space>"
+      
 " インデントはスマートインデント
 set smartindent
 " 折り返し時に表示行単位での移動できるようにする
@@ -19,9 +19,9 @@ nnoremap <C-k> {
 " Tab系
 " 不可視文字を可視化(タブが「▸-」と表示される)
 set list
-set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%,space:_
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 " Tab文字を半角スペースにする
-set expandtab
+" set expandtab
 " 行頭以外のTab文字の表示幅（スペースいくつ分）
 set tabstop=2
 " 行頭でのTab文字の表示幅
@@ -388,8 +388,7 @@ command MP MarkdownPreview "MPでプレビューを開く
 " TODOの設定
 command Todo :tabe ~/todo.md
 let g:simple_todo_map_keys = 0
-imap <C-i> <Plug>(simple-todo-new)
-nmap <leader>s <Plug>(simple-todo-mark-switch)
+imap <C-o> <Plug>(simple-todo-new)
 
 function DoneTask()
   " マークダウンのチェックボックスをチェック済みに
@@ -422,4 +421,3 @@ command Undo :call UndoTask()
 
 nnoremap <leader><cr> :Done<cr>
 nnoremap <leader>u :Undo<cr>
-
