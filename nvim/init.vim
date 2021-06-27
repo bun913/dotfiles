@@ -382,3 +382,6 @@ vnoremap <silent> <Find-Shortcut>  :Farf<cr>
 nnoremap <silent> <Replace-Shortcut>  :Farr<cr>
 vnoremap <silent> <Replace-Shortcut>  :Farr<cr>
 
+" MarkdownPreviw
+command MP MarkdownPreview "MPでプレビューを開く
+

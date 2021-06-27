@@ -1,14 +1,20 @@
 # 各種エディター設定等
-## vim設定
 
-vimの設定情報
+## vim 設定
+
+vim の設定情報
 
 - プラグイン
 - 基本設定
 - チートシートなど
 
-## VsCodeの設定
+### 必要なライブラリ
 
-Keybyndの設定ファイルをアップ
+- npm
+  - Language Server Plotcol を動作させるのに必要
+- yarn
+  - MarkdownPreview に必要
 
+## VsCode の設定
 
+Keybynd の設定ファイルをアップ
