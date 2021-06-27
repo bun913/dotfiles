@@ -21,7 +21,7 @@ hook_add = '''
   au MyAutoCmd VimEnter * nested colorscheme hybrid
 '''
 
-[[plugins]]
+[[plugins]] # Languageサーバープロトコル
 repo = 'neoclide/coc.nvim'
 rev = 'release'
 build = '''
@@ -136,3 +136,5 @@ hook_add = '''
   call denite#custom#var('file_rec', 'command', ['pt', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', ''])
 '''
 
+[[plugins]]
+repo = 'brooth/far.vim'
