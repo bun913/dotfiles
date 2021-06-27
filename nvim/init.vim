@@ -48,7 +48,7 @@ autocmd QuickFixCmdPost *grep* cwindow
 nnoremap <C-s> :w<CR>
 
 " init.vimを開くショートカット
-nnoremap <Leader>. :new ~/.config/nvim/init.vim
+nnoremap <Leader>. :tabe ~/.config/nvim/init.vim
 
 if !&compatible
   set nocompatible
@@ -106,11 +106,11 @@ autocmd FileType defx call s:defx_my_settings()
 	  \ defx#do_action('preview')
 	  nnoremap <silent><buffer><expr> o
 	  \ defx#do_action('open','tabnew')
-	  nnoremap <silent><buffer><expr> K
+	  nnoremap <silent><buffer><expr> M
 	  \ defx#do_action('new_directory')
 	  nnoremap <silent><buffer><expr> N
 	  \ defx#do_action('new_file')
-	  nnoremap <silent><buffer><expr> M
+	  nnoremap <silent><buffer><expr> K
 	  \ defx#do_action('new_multiple_files')
 	  nnoremap <silent><buffer><expr> C
 	  \ defx#do_action('toggle_columns',
@@ -384,4 +384,42 @@ vnoremap <silent> <Replace-Shortcut>  :Farr<cr>
 
 " MarkdownPreviw
 command MP MarkdownPreview "MPでプレビューを開く
+
+" TODOの設定
+command Todo :tabe ~/todo.md
+let g:simple_todo_map_keys = 0
+imap <C-i> <Plug>(simple-todo-new)
+nmap <leader>s <Plug>(simple-todo-mark-switch)
+
+function DoneTask()
+  " マークダウンのチェックボックスをチェック済みに
+  let row = getline(".")
+  let replaced = substitute(row, '\[ \]', "\[x\]", "g")
+  call setline(".", replaced)
+  " 末尾にタイムスタンプを押す
+  let nowPos = getpos(".")
+  let now = "@". strftime("%Y-%m-%d %H:%M:%S")
+  let col = col("$")
+  call cursor(".", col)
+  execute ":normal a" . now
+  " 元のポジションに戻る
+  call setpos(".", nowPos)
+endfunction
+
+function UndoTask()
+  " マークダウンのチェクボックスを戻す
+  let row = getline(".")
+  let replaced = substitute(row, '\[x\]', '\[ \]', 'g')
+  call setline(".", replaced)
+  " " 末尾タイムスタンプを削除
+  let row = getline(".")
+  let deleted = substitute(row, '@.*$', '', 'g')
+  call setline(".", deleted)
+endfunction
+
+command Done :call DoneTask()
+command Undo :call UndoTask()
+
+nnoremap <leader><cr> :Done<cr>
+nnoremap <leader>u :Undo<cr>
 

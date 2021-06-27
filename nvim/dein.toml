@@ -138,3 +138,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'brooth/far.vim'
+
+[[plugins]]
+repo = 'vitalk/vim-simple-todo'
+
