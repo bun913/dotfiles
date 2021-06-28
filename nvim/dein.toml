@@ -111,7 +111,7 @@ repo = 'roxma/vim-hug-neovim-rpc'
 if = '''! has('nvim')'''
 
 [[plugins]]
-repo= 'jiangmiao/auto-pairs'
+repo = 'jiangmiao/auto-pairs'
 
 # ファイル検索
 [[plugins]]
@@ -142,3 +142,5 @@ repo = 'brooth/far.vim'
 [[plugins]]
 repo = 'vitalk/vim-simple-todo'
 
+[[plugins]]
+repo = 'christoomey/vim-tmux-navigator'

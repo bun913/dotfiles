@@ -35,6 +35,8 @@ set smartcase
 set incsearch
 " 検索時に最後まで行ったら最初に戻る
 set wrapscan
+" LeaderKeyをスペースに設定
+let mapleader = "\<Space>"
 " 検索語をハイライト表示
 set hlsearch
 " ESC連打でハイライト解除
@@ -416,8 +418,5 @@ function UndoTask()
   call setline(".", deleted)
 endfunction
 
-command Done :call DoneTask()
-command Undo :call UndoTask()
-
-nnoremap <leader><cr> :Done<cr>
-nnoremap <leader>u :Undo<cr>
+nnoremap <leader><cr> :call DoneTask()<cr>
+nnoremap <leader>u :call UndoTask()<cr>

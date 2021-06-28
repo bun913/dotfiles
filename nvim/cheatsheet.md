@@ -4,6 +4,17 @@
 
 ctrl + s でファイルを保存できるようにしている
 
+## コードレビュー
+
+```bash
+# main/masterブランチからチェックアウト
+git fetch
+git pull origin
+git checkout -b review
+git merge --no-commit --no-ff ${レビューするブランチ}
+git reset
+```
+
 ## ファイル横断検索
 
 ### far.vim
