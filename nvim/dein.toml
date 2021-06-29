@@ -144,3 +144,9 @@ repo = 'vitalk/vim-simple-todo'
 
 [[plugins]]
 repo = 'christoomey/vim-tmux-navigator'
+
+[[plugins]]
+repo = 'Yggdroot/LeaderF'
+# hook_add = """
+# ./install.sh
+# """

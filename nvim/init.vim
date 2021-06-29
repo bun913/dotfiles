@@ -137,7 +137,7 @@ autocmd FileType defx call s:defx_my_settings()
 	  \ defx#do_action('cd', ['..'])
 	  nnoremap <silent><buffer><expr> ~
 	  \ defx#do_action('cd')
-	  nnoremap <silent><buffer><expr> q
+	  nnoremap <silent><buffer><expr> <C-n>
 	  \ defx#do_action('quit')
 	  nnoremap <silent><buffer><expr> <Space>
 	  \ defx#do_action('toggle_select') . 'j'
@@ -156,8 +156,6 @@ autocmd FileType defx call s:defx_my_settings()
 	endfunction
 
 call defx#custom#option('_', {
-  \ 'winwidth': 40,
-  \ 'split': 'vertical',
   \ 'direction': 'topleft',
   \ 'show_ignored_files': 1,
   \ 'buffer_name': 'exproler',
@@ -377,12 +375,10 @@ set regexpengine=1        " use old regexp engine
 set ignorecase smartcase  " ignore case only when the pattern contains no capital letters
 
 " shortcut for far.vim find
-nnoremap <silent> <Find-Shortcut>  :Farf<cr>
-vnoremap <silent> <Find-Shortcut>  :Farf<cr>
+nnoremap <silent> <C-f>  :Farf<cr>
 
 " shortcut for far.vim replace
-nnoremap <silent> <Replace-Shortcut>  :Farr<cr>
-vnoremap <silent> <Replace-Shortcut>  :Farr<cr>
+nnoremap <silent> <C-g>  :Farr<cr>
 
 " MarkdownPreviw
 command MP MarkdownPreview "MPでプレビューを開く
@@ -390,7 +386,7 @@ command MP MarkdownPreview "MPでプレビューを開く
 " TODOの設定
 command Todo :tabe ~/todo.md
 let g:simple_todo_map_keys = 0
-imap <C-o> <Plug>(simple-todo-new)
+imap <C-i> <Plug>(simple-todo-new)
 
 function DoneTask()
   " マークダウンのチェックボックスをチェック済みに
@@ -420,3 +416,8 @@ endfunction
 
 nnoremap <leader><cr> :call DoneTask()<cr>
 nnoremap <leader>u :call UndoTask()<cr>
+
+" LeaderF
+nnoremap ;f :Leaderf file<cr>
+nnoremap ;g :Leaderf function<cr>
+g:Lf_WorkingDirectoryMode = ['.git', '.root']
