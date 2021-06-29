@@ -420,4 +420,6 @@ nnoremap <leader>u :call UndoTask()<cr>
 " LeaderF
 nnoremap ;f :Leaderf file<cr>
 nnoremap ;g :Leaderf function<cr>
-g:Lf_WorkingDirectoryMode = ['.git', '.root']
+let g:Lf_RootMarkers = ['.project']
+let g:Lf_WorkingDirectoryMode = 'Ac'
+let g:Lf_WindowPosition = 'popup'
