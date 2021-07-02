@@ -72,7 +72,7 @@ endif
 let g:dein#auto_recache = 1
 let &runtimepath = s:dein_repo_dir .",". &runtimepath
 " プラグイン読み込み＆キャッシュ作成
-let s:toml_file = fnamemodify(expand('<sfile>'), ':h').'/dein.toml'
+let s:file_file = fnamemodify(expand('<sfile>'), ':h').'/dein.toml'
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
   call dein#load_toml(s:toml_file)

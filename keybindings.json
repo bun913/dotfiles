@@ -43,8 +43,7 @@
   },
   {
     "key": "shift+cmd+g",
-    "command": "workbench.view.scm",
-    "when": "workbench.scm.active && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
+    "command": "workbench.view.scm"
   },
   {
     "key": "u",
@@ -64,7 +63,7 @@
   {
     "key": "shift+u",
     "command": "git.unstage",
-    "when": "workbench.scm.active"
+    "when": "sideBarFocus && activeViewlet == 'workbench.view.scm'"
   },
   // Terminal
   // terminalへフォーカス
@@ -124,7 +123,7 @@
     "when": "terminalFocus && terminalProcessSupported"
   },
   {
-    "key": "ctrl+t l",
+    "key": "cmd+l",
     "command": "workbench.action.terminal.focusNextPane",
     "when": "terminalFocus && terminalProcessSupported"
   },
@@ -134,7 +133,7 @@
     "when": "terminalFocus && terminalProcessSupported"
   },
   {
-    "key": "ctrl+t h",
+    "key": "cmd+h",
     "command": "workbench.action.terminal.focusPreviousPane",
     "when": "terminalFocus && terminalProcessSupported"
   },
@@ -142,5 +141,14 @@
     "key": "alt+cmd+up",
     "command": "-workbench.action.terminal.focusPreviousPane",
     "when": "terminalFocus && terminalProcessSupported"
+  },
+  // ワークスペース切替
+  {
+    "key": "shift+cmd+w",
+    "command": "vscodeWorkspaceSwitcherViewInActivityBar.focus"
+  },
+  {
+    "key": "shift+cmd+d",
+    "command": "vscode-docker.containers.attachShell"
   }
 ]
