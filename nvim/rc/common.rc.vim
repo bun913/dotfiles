@@ -1,4 +1,6 @@
 " 共通設定
+" jjでescと同じ効果を
+inoremap <silent> jj <ESC>
 set number
 set smartindent
 set clipboard=unnamed
@@ -11,12 +13,18 @@ nnoremap k gk
 " 行頭・行末の移動
 nnoremap H ^
 nnoremap L $
-" 段落の移動
-nnoremap <C-j> }
-nnoremap <C-k> {
-" シンタックスハイライトは重くなったりするので一旦無効化
+" Move window
+nmap <Space> <C-w>w
+map s<left> <C-w>h
+map s<up> <C-w>k
+map s<down> <C-w>j
+map s<right> <C-w>l
+map sh <C-w>h
+map sk <C-w>k
+map sj <C-w>j
+map sl <C-w>l
 " syntax disable
-" Tab系
+set synmaxcol=300
 " 不可視文字を可視化(タブが「▸-」と表示される)
 set list
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
@@ -45,10 +53,8 @@ nmap <Esc><Esc> :nohlsearch<CR><Esc>
 set undofile
 " vimgrep検索後、自動でQuickfixが起動する
 autocmd QuickFixCmdPost *grep* cwindow
-
-" C+sで保存ができるようにする
-nnoremap <C-s> :w<CR>
-
 " init.vimを開くショートカット
 nnoremap <Leader>. :tabe ~/.config/nvim/init.vim
-
+" gitの差分を表示
+let g:gitgutter_highlight_lines = 1
+nnoremap sm :DoShowMarks<CR>

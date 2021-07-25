@@ -47,7 +47,7 @@ autocmd FileType defx call s:defx_my_settings()
 	  \ defx#do_action('cd', ['..'])
 	  nnoremap <silent><buffer><expr> ~
 	  \ defx#do_action('cd')
-	  nnoremap <silent><buffer><expr> <C-n>
+	  nnoremap <silent><buffer><expr> q
 	  \ defx#do_action('quit')
 	  nnoremap <silent><buffer><expr> <Space>
 	  \ defx#do_action('toggle_select') . 'j'

@@ -1,3 +1,17 @@
+# プラグイン
+source ~/.zplug/init.zsh
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-completions"
+
+if ! zplug check --verbose; then
+    printf 'Install? [y/N]: '
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+zplug load
+
 # alias系
 alias tf=terraform
 alias k=kubectl
@@ -16,3 +30,4 @@ function ide() {
   tmux split-window -h -p 50
 }
 alias c=clear
+

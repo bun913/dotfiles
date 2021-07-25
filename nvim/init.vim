@@ -25,23 +25,38 @@ function! s:source_rc(rc_file_name)
 endfunction
 
 " 共通設定ファイル
-call s:source_rc('common.rc.vim')
-" deinの設定ファイル
-call s:source_rc('dein.rc.vim')
-" defxの設定ファイル
-call s:source_rc('defx.rc.vim')
-" vim-arilinesの設定ファイル
-call s:source_rc('airline.rc.vim')
-" vim-cheatsheetの設定ファイル
-call s:source_rc('cheatsheet.rc.vim')
-" coc.nvimの設定ファイル
-call s:source_rc('coc.rc.vim')
-" far.vimの設定ファイル
-call s:source_rc('far.rc.vim')
-" leaderfの設定ファイル
-call s:source_rc('leaderf.rc.vim')
-" todo系の設定ファイル
-call s:source_rc('todo.rc.vim')
+if exists('g:vscode')
+    " VSCode extension
+    call s:source_rc('common.rc.vim')
+    " deinの設定ファイル
+    call s:source_rc('dein.rc.vim')
+    " vim-cheatsheetの設定ファイル
+    call s:source_rc('cheatsheet.rc.vim')
+    " leaderfの設定ファイル
+    call s:source_rc('leaderf.rc.vim')
+		call dein#add('asvetliakov/vim-easymotion')
+else
+    " ordinary neovim
+    call s:source_rc('common.rc.vim')
+    " deinの設定ファイル
+    call s:source_rc('dein.rc.vim')
+    " defxの設定ファイル
+    call s:source_rc('defx.rc.vim')
+    " vim-arilinesの設定ファイル
+    call s:source_rc('airline.rc.vim')
+    " vim-cheatsheetの設定ファイル
+    call s:source_rc('cheatsheet.rc.vim')
+    " coc.nvimの設定ファイル
+    call s:source_rc('coc.rc.vim')
+    " far.vimの設定ファイル
+    call s:source_rc('far.rc.vim')
+    " leaderfの設定ファイル
+    call s:source_rc('leaderf.rc.vim')
+    " todo系の設定ファイル
+    call s:source_rc('todo.rc.vim')
+		call s:source_rc('fuelphp.rc.vim')
+endif
+
 
 " MarkdownPreviw
 command MP MarkdownPreview "MPでプレビューを開く

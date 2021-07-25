@@ -143,10 +143,24 @@ repo = 'brooth/far.vim'
 repo = 'vitalk/vim-simple-todo'
 
 [[plugins]]
-repo = 'christoomey/vim-tmux-navigator'
-
-[[plugins]]
 repo = 'Yggdroot/LeaderF'
 # hook_add = """
 # ./install.sh
 # """
+
+[[plugins]]
+repo = 'stephpy/vim-php-cs-fixer'
+
+[[plugins]]
+repo = 'othree/eregex.vim'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+[[plugins]]
+repo = 'tpope/vim-repeat'
+
+[[plugins]]
+repo = 'jacquesbh/vim-showmarks'
+
+[[plugins]]repo='bronson/vim-trailing-whitespace'
