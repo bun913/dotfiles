@@ -4,7 +4,6 @@ inoremap <silent> jj <ESC>
 set number
 set smartindent
 set clipboard=unnamed
-      
 " インデントはスマートインデント
 set smartindent
 " 折り返し時に表示行単位での移動できるようにする
@@ -51,8 +50,6 @@ set hlsearch
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 " undoの永続
 set undofile
-" vimgrep検索後、自動でQuickfixが起動する
-autocmd QuickFixCmdPost *grep* cwindow
 " init.vimを開くショートカット
 nnoremap <Leader>. :tabe ~/.config/nvim/init.vim
 " gitの差分を表示

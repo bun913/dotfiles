@@ -172,7 +172,7 @@ nmap <silent> <space>rn <Plug>(coc-rename)
 "スペースfmでFormat
 nmap <silent> <space>fm <Plug>(coc-format)
 "スペースesでeslint実行
-nmap <silent> <space>es <Plug>call CocCommand eslint.executeAutofix
+nmap <silent> <space>es :CocCommand eslint.executeAutofix<CR>
 
 let g:coc_global_extensions = [
       \ 'coc-lists',
@@ -187,8 +187,14 @@ let g:coc_global_extensions = [
       \ 'coc-tsserver',
       \ 'coc-solargraph',
       \ 'coc-python',
+      \ 'coc-pyright',
       \ 'coc-snippets',
-      \ 'coc-vetur'
+      \ 'coc-vetur',
+      \ 'coc-docker'
       \ ]
-"
-
+" pylint用の設定
+function! Pyright() abort
+  execute "CocCommand" "python.sortImports"
+  execute "CocCommand" "python.runLinting"
+endfunction
+nnoremap <Leader>py :call Pyright()<CR>

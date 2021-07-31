@@ -46,8 +46,6 @@ hook_add = '''
   nmap <silent> <space>l :<C-u>CocList<cr>
   nmap <silent> <space>h :<C-u>call CocAction('doHover')<cr>
   nmap <silent> <space>fm <Plug>(coc-format)
-  nnoremap <C-p> :CocList files<CR>
-  nnoremap <C-g> :CocList grep<CR>
 '''
 # 例えば絵文字のインストール :CocInstall coc-emoji
 # すでにインストールしているもの
