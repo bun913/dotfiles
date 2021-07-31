@@ -58,3 +58,5 @@ nnoremap <Leader>. :tabe ~/.config/nvim/init.vim
 " gitの差分を表示
 let g:gitgutter_highlight_lines = 1
 nnoremap sm :DoShowMarks<CR>
+" 置換のカーソル位置を調整
+nnoremap <Leader>re :%s;\<<C-R><C-W>\>;g<Left><Left>;

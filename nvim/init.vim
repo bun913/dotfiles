@@ -54,7 +54,6 @@ else
     call s:source_rc('leaderf.rc.vim')
     " todo系の設定ファイル
     call s:source_rc('todo.rc.vim')
-		call s:source_rc('fuelphp.rc.vim')
 endif
 
 
