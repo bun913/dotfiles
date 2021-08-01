@@ -57,3 +57,7 @@ let g:gitgutter_highlight_lines = 1
 nnoremap sm :DoShowMarks<CR>
 " 置換のカーソル位置を調整
 nnoremap <Leader>re :%s;\<<C-R><C-W>\>;g<Left><Left>;
+" Google翻訳のショートカット
+let g:translate_source = "en"
+let g:translate_target = "ja"
+

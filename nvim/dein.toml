@@ -162,3 +162,6 @@ repo = 'tpope/vim-repeat'
 repo = 'jacquesbh/vim-showmarks'
 
 [[plugins]]repo='bronson/vim-trailing-whitespace'
+
+[[plugins]]
+repo = 'skanehira/translate.vim'
