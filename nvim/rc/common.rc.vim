@@ -4,6 +4,9 @@ inoremap <silent> jj <ESC>
 set number
 set smartindent
 set clipboard=unnamed
+set tabstop=2
+set expandtab
+set shiftwidth=2
 " インデントはスマートインデント
 set smartindent
 " 折り返し時に表示行単位での移動できるようにする
