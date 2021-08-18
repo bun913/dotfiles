@@ -170,3 +170,9 @@ repo = 'skanehira/translate.vim'
 [[plugins]]
 repo = 'yuttie/comfortable-motion.vim'
 
+[[plugins]]
+repo = 'LeafCage/vimhelpgenerator'
+
+[[plugins]]
+repo = 'bun913/min-todo.vim'
+

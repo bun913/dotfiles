@@ -30,4 +30,5 @@ function ide() {
   tmux split-window -h -p 50
 }
 alias c=clear
-
+alias d=docker
+alias dc=docker-compose

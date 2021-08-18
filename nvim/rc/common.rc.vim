@@ -63,4 +63,8 @@ nnoremap <Leader>re :%s;\<<C-R><C-W>\>;g<Left><Left>;
 " Google翻訳のショートカット
 let g:translate_source = "en"
 let g:translate_target = "ja"
-
+" TODOコマンドのマッピング定義
+nnoremap <C-c> :ToggleTask<CR>
+imap <C-c> <ESC>:CreateTask<CR>A
+nnoremap <Leader>t :tabe ~/todo.md<CR>
+command! AR call mintodo#ArchiveTasks()
