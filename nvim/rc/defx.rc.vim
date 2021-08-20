@@ -1,3 +1,4 @@
+autocmd VimEnter * execute 'Defx'
 nnoremap <silent> <C-n> :Defx<CR>
 autocmd FileType defx call s:defx_my_settings()
 	function! s:defx_my_settings() abort
@@ -66,13 +67,14 @@ autocmd FileType defx call s:defx_my_settings()
 endfunction
 
 call defx#custom#option('_', {
-  \ 'direction': 'topleft',
-  \ 'show_ignored_files': 1,
-  \ 'buffer_name': 'exproler',
-  \ 'toggle': 1,
-  \ 'resume': 1,
-  \ 'columns': 'indent:icons:filename:mark',
-  \ })
+      \ 'winwidth': 40,
+      \ 'split': 'vertical',
+      \ 'direction': 'topleft',
+      \ 'show_ignored_files': 1,
+      \ 'buffer_name': 'exlorer',
+      \ 'toggle': 1,
+      \ 'resume': 1,
+      \ })
 
 autocmd BufWritePost * call defx#redraw()
 autocmd BufEnter * call defx#redraw()

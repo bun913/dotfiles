@@ -52,8 +52,6 @@ else
     call s:source_rc('far.rc.vim')
     " leaderfの設定ファイル
     call s:source_rc('leaderf.rc.vim')
-    " todo系の設定ファイル
-    call s:source_rc('todo.rc.vim')
 endif
 
 

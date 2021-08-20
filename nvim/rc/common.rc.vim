@@ -68,3 +68,4 @@ nnoremap <C-c> :ToggleTask<CR>
 imap <C-c> <ESC>:CreateTask<CR>A
 nnoremap <Leader>t :tabe ~/todo.md<CR>
 command! AR call mintodo#ArchiveTasks()
+

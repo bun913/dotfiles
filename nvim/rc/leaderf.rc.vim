@@ -5,5 +5,7 @@ let g:Lf_WindowPosition = 'popup'
 let g:Lf_CommandMap = {
 \   '<C-k>': ['<C-p>'],
 \   '<C-j>': ['<C-n>'],
+\   '<C-T>': ['<CR>'],
+\   '<C-]>': ['<C-v>'],
 \}
 

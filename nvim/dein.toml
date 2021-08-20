@@ -138,9 +138,6 @@ hook_add = '''
 repo = 'brooth/far.vim'
 
 [[plugins]]
-repo = 'vitalk/vim-simple-todo'
-
-[[plugins]]
 repo = 'Yggdroot/LeaderF'
 # hook_add = """
 # ./install.sh

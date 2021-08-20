@@ -71,5 +71,6 @@
     }
   },
   "python.jediEnabled": false,
-  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown"]
+  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown"],
+  "coc.preferences.jumpCommand": "tabe"
 }
