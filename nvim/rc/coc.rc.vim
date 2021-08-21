@@ -160,8 +160,8 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 "ノーマルモードで
 "スペース2回でCocList
 nmap <silent> <space>l :<C-u>CocList<cr>
-"スペースhでHover
-nmap <silent> <space>h :<C-u>call CocAction('doHover')<cr>
+"Hoverアクション
+nmap <silent> <C-k> :<C-u>call CocAction('doHover')<cr>
 "スペースdfでDefinition
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
