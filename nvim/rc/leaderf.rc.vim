@@ -8,4 +8,6 @@ let g:Lf_CommandMap = {
 \   '<C-T>': ['<CR>'],
 \   '<C-]>': ['<C-v>'],
 \}
+" 検索ツールをrgに変更
+let g:Lf_DefaultExternalTool="rg"
 
