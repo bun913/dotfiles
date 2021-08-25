@@ -68,4 +68,8 @@ nnoremap <C-c> :ToggleTask<CR>
 imap <C-c> <ESC>:CreateTask<CR>A
 nnoremap <Leader>t :tabe ~/todo.md<CR>
 command! AR call mintodo#ArchiveTasks()
-
+" 置換コマンドをrgにして.gitignoreも無視
+if executable('rg')
+    let &grepprg = 'rg --vimgrep --hidden'
+    set grepformat=%f:%l:%c:%m
+endif
