@@ -54,7 +54,7 @@ hook_add = '''
 # :CocInstall cos-json
 
 [[plugins]]
-repo = 'tpope/vim-surround'
+repo = 'machakann/vim-sandwich'
 
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
