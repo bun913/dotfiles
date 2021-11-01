@@ -1,9 +1,11 @@
 autocmd VimEnter * execute 'Defx'
-nnoremap <silent> <C-n> :Defx<CR>
+nnoremap <silent> <C-n> :Defx `expand('%:p:h')` -ignored-files=".git" -search=`expand('%:p')`<CR>
 autocmd FileType defx call s:defx_my_settings()
 	function! s:defx_my_settings() abort
 	  " Define mappings
 	  nnoremap <silent><buffer><expr> <CR>
+	  \ defx#do_action('open','tabnew')
+	  nnoremap <silent><buffer><expr> l
 	  \ defx#do_action('open','tabnew')
 	  nnoremap <silent><buffer><expr> c
 	  \ defx#do_action('copy')
@@ -11,9 +13,7 @@ autocmd FileType defx call s:defx_my_settings()
 	  \ defx#do_action('move')
 	  nnoremap <silent><buffer><expr> p
 	  \ defx#do_action('paste')
-	  nnoremap <silent><buffer><expr> l
-	  \ defx#do_action('open', 'vsplit')
-	  nnoremap <silent><buffer><expr> E
+	  nnoremap <silent><buffer><expr> v
 	  \ defx#do_action('open', 'vsplit')
 	  nnoremap <silent><buffer><expr> P
 	  \ defx#do_action('preview')
@@ -48,8 +48,12 @@ autocmd FileType defx call s:defx_my_settings()
 	  \ defx#do_action('cd', ['..'])
 	  nnoremap <silent><buffer><expr> ~
 	  \ defx#do_action('cd')
+" Quit
+	  nnoremap <silent><buffer><expr> <C-n>
+	  \ defx#do_action('quit')
 	  nnoremap <silent><buffer><expr> q
 	  \ defx#do_action('quit')
+
 	  nnoremap <silent><buffer><expr> <Space>
 	  \ defx#do_action('toggle_select') . 'j'
 	  nnoremap <silent><buffer><expr> *
@@ -64,16 +68,19 @@ autocmd FileType defx call s:defx_my_settings()
 	  \ defx#do_action('print')
 	  nnoremap <silent><buffer><expr> cd
 	  \ defx#do_action('change_vim_cwd')
+" ツリーを表示/非表示する
+    nnoremap <silent><buffer><expr> t
+    \ defx#do_action('open_or_close_tree')
 endfunction
 
 call defx#custom#option('_', {
-      \ 'winwidth': 40,
-      \ 'split': 'vertical',
       \ 'direction': 'topleft',
       \ 'show_ignored_files': 1,
       \ 'buffer_name': 'exlorer',
       \ 'toggle': 1,
       \ 'resume': 1,
+      \ 'columns': 'git:icons:indent:filename:mark',
+      \ 'auto_recursive_level': 1,
       \ })
 
 autocmd BufWritePost * call defx#redraw()

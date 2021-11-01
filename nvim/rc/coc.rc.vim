@@ -198,3 +198,4 @@ function! Pyright() abort
   execute "CocCommand" "python.runLinting"
 endfunction
 nnoremap <Leader>py :call Pyright()<CR>
+

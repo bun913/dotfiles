@@ -29,7 +29,7 @@ map sl <C-w>l
 set synmaxcol=300
 " 不可視文字を可視化(タブが「▸-」と表示される)
 set list
-set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+set listchars=tab:>-,space:-
 " Tab文字を半角スペースにする
 " set expandtab
 " 行頭以外のTab文字の表示幅（スペースいくつ分）
@@ -73,3 +73,8 @@ if executable('rg')
     let &grepprg = 'rg --vimgrep --hidden'
     set grepformat=%f:%l:%c:%m
 endif
+nnoremap <C-g> :%s###g<Left><Left>
+" タブを移動させる
+nnoremap <Tab>l :+tabmove<CR>
+nnoremap <Tab>h :-tabmove<CR>
+
