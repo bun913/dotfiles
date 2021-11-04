@@ -1,5 +1,17 @@
 autocmd VimEnter * execute 'Defx'
 nnoremap <silent> <C-n> :Defx `expand('%:p:h')` -ignored-files=".git" -search=`expand('%:p')`<CR>
+
+augroup user_plugin_defx
+	  autocmd!
+	  " Define defx window mappings
+	  autocmd FileType defx call <SID>defx_mappings()
+	  autocmd BufNewFile,BufRead * Defx `getcwd()` -no-focus
+	  \ -search=`expand('%:p')`
+	augroup END
+	function! s:defx_mappings() abort
+	  setlocal cursorline
+	endfunction
+
 autocmd FileType defx call s:defx_my_settings()
 	function! s:defx_my_settings() abort
 	  " Define mappings
@@ -70,18 +82,21 @@ autocmd FileType defx call s:defx_my_settings()
 	  \ defx#do_action('change_vim_cwd')
 " ツリーを表示/非表示する
     nnoremap <silent><buffer><expr> t
-    \ defx#do_action('open_or_close_tree')
+    \ defx#do_action('open_tree', 'toggle')
 endfunction
 
 call defx#custom#option('_', {
       \ 'direction': 'topleft',
+      \ 'split': 'floating',
+      \ 'winwidth': 100,
       \ 'show_ignored_files': 1,
       \ 'buffer_name': 'exlorer',
       \ 'toggle': 1,
       \ 'resume': 1,
       \ 'columns': 'git:icons:indent:filename:mark',
-      \ 'auto_recursive_level': 1,
+      \ 'auto_recursive_level': 3,
       \ })
 
 autocmd BufWritePost * call defx#redraw()
 autocmd BufEnter * call defx#redraw()
+

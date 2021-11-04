@@ -206,5 +206,21 @@
   {
     "key": "cmd+t",
     "command": "workbench.action.createTerminalEditor"
+  },
+  {
+    "key": "alt+h",
+    "command": "workbench.action.moveEditorLeftInGroup"
+  },
+  {
+    "key": "cmd+k shift+cmd+left",
+    "command": "-workbench.action.moveEditorLeftInGroup"
+  },
+  {
+    "key": "alt+l",
+    "command": "workbench.action.moveEditorRightInGroup"
+  },
+  {
+    "key": "cmd+k shift+cmd+right",
+    "command": "-workbench.action.moveEditorRightInGroup"
   }
 ]

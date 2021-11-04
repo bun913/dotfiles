@@ -173,3 +173,6 @@ repo = 'LeafCage/vimhelpgenerator'
 [[plugins]]
 repo = 'bun913/min-todo.vim'
 
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+
