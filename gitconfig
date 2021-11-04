@@ -1,0 +1,11 @@
+# シークレット情報以外の設定部分
+# 事前に brew install git-delta
+[core]
+  pager = delta --theme='GitHub'
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+    line-numbers = true
+    side-by-side = true
+    syntax-theme = GitHub
+

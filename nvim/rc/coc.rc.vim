@@ -190,6 +190,7 @@ let g:coc_global_extensions = [
       \ 'coc-pyright',
       \ 'coc-snippets',
       \ 'coc-vetur',
+      \ 'coc-fzf-preview',
       \ 'coc-docker'
       \ ]
 " pylint用の設定
@@ -198,4 +199,8 @@ function! Pyright() abort
   execute "CocCommand" "python.runLinting"
 endfunction
 nnoremap <Leader>py :call Pyright()<CR>
-
+"
+" fzf-preview.vim
+nnoremap <C-g> :CocCommand fzf-preview.ProjectGrep<Space>
+nnoremap <C-p> :CocCommand fzf-preview.ProjectFiles<CR>
+command! Regrep :CocCommand fzf-preview.ProjectGrepRecall

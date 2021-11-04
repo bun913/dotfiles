@@ -77,9 +77,6 @@ repo = 'ryanoasis/vim-devicons'
 # ファイラーでアイコンを表示する設定
 
 [[plugins]]
-repo = 'kristijanhusak/defx-icons'
-
-[[plugins]]
 # チートシート
 repo = 'reireias/vim-cheatsheet'
 # let g:cheatsheet#cheat_file = '~/.config/nvim/cheatsheet.md'
@@ -91,14 +88,6 @@ repo = 'simeji/winresizer'
 # vimでgit操作ができるやつ
 repo = 'tpope/vim-fugitive'
 
-# ファイラー
-[[plugins]]
-repo = 'Shougo/defx.nvim'
-# python3.6.1以上が必要
-# pip3 install --user pynvim も必要
-
-# [plugins]]
-# repo = 'kristijanhusak/defx-git'
 
 [[plugins]]
 repo = 'roxma/nvim-yarp'
@@ -151,6 +140,9 @@ repo = 'othree/eregex.vim'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
+add = '''
+let g:gitgutter_highlight_lines = 1
+'''
 
 [[plugins]]
 repo = 'tpope/vim-repeat'
@@ -159,7 +151,7 @@ repo = 'tpope/vim-repeat'
 repo = 'jacquesbh/vim-showmarks'
 
 [[plugins]]
-repo='bronson/vim-trailing-whitespace'
+repo = 'bronson/vim-trailing-whitespace'
 
 [[plugins]]
 repo = 'skanehira/translate.vim'
@@ -175,4 +167,76 @@ repo = 'bun913/min-todo.vim'
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'
+
+[[plugins]]
+repo = 'lambdalisue/fern.vim'
+hook_add = '''
+nnoremap <C-n> :Fern . -reveal=% -drawer -toggle -width=40<CR>
+let g:fern#renderer = "nerdfont"
+function! FernInit() abort
+    nmap <buffer> v <Plug>(fern-action-open:side)
+    nmap <buffer> M <Plug>(fern-action-new-dir)
+    nmap <buffer> ; <Plug>(fern-action-hidden:toggle)
+    nmap <buffer> - <Plug>(fern-action-mark:toggle)
+    vmap <buffer> - <Plug>(fern-action-mark:toggle)
+    nmap <buffer> C <Plug>(fern-action-clipboard-copy)
+    nmap <buffer> X <Plug>(fern-action-clipboard-move)
+    nmap <buffer> P <Plug>(fern-action-clipboard-paste)
+    nmap <buffer> h <Plug>(fern-action-collapse)
+    nmap <buffer> c <Plug>(fern-action-copy)
+    nmap <buffer> <leader>h <Plug>(fern-action-leave)
+    nmap <buffer> m <Plug>(fern-action-move)
+    nmap <buffer> N <Plug>(fern-action-new-file)
+    nmap <buffer> <cr> <Plug>(fern-action-open-or-enter)
+    nmap <buffer> l <Plug>(fern-action-open-or-expand)
+    nmap <buffer> s <Plug>(fern-action-open:select)
+    nmap <buffer> <CR> <Plug>(fern-action-open:tabedit)
+    nmap <buffer> o <Plug>(fern-action-open:tabedit)
+    nmap <buffer> <C-l> <Plug>(fern-action-reload)
+    nmap <buffer> r <Plug>(fern-action-rename)
+    nmap <buffer> i <Plug>(fern-action-reveal)
+    nmap <buffer> D <Plug>(fern-action-trash)
+    nmap <buffer> y <Plug>(fern-action-yank)
+    nmap <buffer> gr <Plug>(fern-action-grep)
+    nmap <buffer> d <Plug>(fern-action-remove)
+    nmap <buffer> B <Plug>(fern-action-save-as-bookmark)
+    nmap <buffer> cd <Plug>(fern-action-tcd)
+    nmap <buffer> <C-h> <C-w>h
+    nmap <buffer> <C-l> <C-w>l
+endfunction
+augroup FernEvents
+  autocmd!
+  autocmd FileType fern call FernInit()
+augroup END
+let g:fern#disable_default_mappings = 1
+'''
+
+[[plugins]]
+repo = 'lambdalisue/fern-git-status.vim'
+
+[[plugins]]
+repo = 'lambdalisue/nerdfont.vim'
+
+[[plugins]]
+repo = 'lambdalisue/fern-renderer-nerdfont.vim'
+
+[[plugins]]
+repo = 'thinca/vim-qfreplace'
+hook_add = '''
+nnoremap qf :Qfreplace<CR>
+'''
+
+[[plugins]]
+repo = 'junegunn/fzf'
+build = '''
+./install --all
+'''
+merged = 0
+
+[[plugins]]
+repo = 'yuki-yano/fzf-preview.vim'
+rev = 'release'
+
+[[plugins]]
+repo = 'lambdalisue/gina.vim'
 

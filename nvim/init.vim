@@ -37,8 +37,6 @@ else
     call s:source_rc('common.rc.vim')
     " deinの設定ファイル
     call s:source_rc('dein.rc.vim')
-    " defxの設定ファイル
-    call s:source_rc('defx.rc.vim')
     " vim-arilinesの設定ファイル
     call s:source_rc('airline.rc.vim')
     " vim-cheatsheetの設定ファイル
@@ -47,8 +45,6 @@ else
     call s:source_rc('coc.rc.vim')
     " far.vimの設定ファイル
     call s:source_rc('far.rc.vim')
-    " leaderfの設定ファイル
-    call s:source_rc('leaderf.rc.vim')
 endif
 
 

@@ -5,6 +5,7 @@ set number
 set smartindent
 set clipboard=unnamed
 set tabstop=2
+set cursorline
 set expandtab
 set shiftwidth=2
 " インデントはスマートインデント
@@ -29,7 +30,7 @@ map sl <C-w>l
 set synmaxcol=300
 " 不可視文字を可視化(タブが「▸-」と表示される)
 set list
-set listchars=tab:>-,space:-
+set listchars=tab:»-,space:·
 " Tab文字を半角スペースにする
 " set expandtab
 " 行頭以外のTab文字の表示幅（スペースいくつ分）
@@ -73,8 +74,19 @@ if executable('rg')
     let &grepprg = 'rg --vimgrep --hidden'
     set grepformat=%f:%l:%c:%m
 endif
-nnoremap <C-g> :%s###g<Left><Left>
+" nnoremap <C-g> :%s###g<Left><Left>
 " タブを移動させる
 nnoremap <Tab>l :+tabmove<CR>
 nnoremap <Tab>h :-tabmove<CR>
+" ファイルタイプごとのタブ設定など
+augroup fileTypeIndent
+    autocmd!
+    autocmd BufNewFile,BufRead *.py setlocal et tabstop=4 softtabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.rb setlocal et tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.js setlocal et tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.ts setlocal et tabstop=2 softtabstop=2 shiftwidth=2
+    " 現行プロジェクトのPHPの設定に準拠
+    autocmd BufNewFile,BufRead *.php setlocal noet tabstop=4 softtabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.go setlocal noet tabstop=4 softtabstop=4 shiftwidth=4
+augroup END
 
