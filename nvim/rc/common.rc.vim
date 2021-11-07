@@ -30,7 +30,7 @@ map sl <C-w>l
 set synmaxcol=300
 " 不可視文字を可視化(タブが「▸-」と表示される)
 set list
-set listchars=tab:»-,space:·
+set listchars=tab:»-
 " Tab文字を半角スペースにする
 " set expandtab
 " 行頭以外のTab文字の表示幅（スペースいくつ分）
@@ -88,5 +88,7 @@ augroup fileTypeIndent
     " 現行プロジェクトのPHPの設定に準拠
     autocmd BufNewFile,BufRead *.php setlocal noet tabstop=4 softtabstop=4 shiftwidth=4
     autocmd BufNewFile,BufRead *.go setlocal noet tabstop=4 softtabstop=4 shiftwidth=4
+    " terraformの場合 coc#refreshを呼ぶ
+    autocmd BufNewFile,BufRead *.tf :call coc#refresh()<CR>
 augroup END
 

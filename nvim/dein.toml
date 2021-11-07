@@ -19,6 +19,8 @@ hook_add = '''
   " colorscheme 設定は source 後に行う必要があるので VimEnter で行う。
   " 但し Colorscheme イベントの発生が抑制されないよう nented を付ける。
   au MyAutoCmd VimEnter * nested colorscheme hybrid
+  " 事前にiterm用のcolor-prisetを用意しておく必要がある
+  " https://gist.github.com/luan/6362811
 '''
 
 [[plugins]] # Languageサーバープロトコル
@@ -239,4 +241,7 @@ rev = 'release'
 
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
+
+[[plugins]]
+repo = 'kassio/neoterm'
 
