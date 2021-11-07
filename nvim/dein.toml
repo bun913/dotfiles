@@ -242,6 +242,3 @@ rev = 'release'
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
 
-[[plugins]]
-repo = 'kassio/neoterm'
-

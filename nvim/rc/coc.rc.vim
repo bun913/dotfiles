@@ -204,3 +204,6 @@ nnoremap <Leader>py :call Pyright()<CR>
 nnoremap <C-g> :CocCommand fzf-preview.ProjectGrep<Space>
 nnoremap <C-p> :CocCommand fzf-preview.ProjectFiles<CR>
 command! Regrep :CocCommand fzf-preview.ProjectGrepRecall
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+

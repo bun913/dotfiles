@@ -87,8 +87,8 @@ augroup fileTypeIndent
     autocmd BufNewFile,BufRead *.ts setlocal et tabstop=2 softtabstop=2 shiftwidth=2
     " 現行プロジェクトのPHPの設定に準拠
     autocmd BufNewFile,BufRead *.php setlocal noet tabstop=4 softtabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.go setlocal noet tabstop=4 softtabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.go  setlocal noet tabstop=4 softtabstop=4 shiftwidth=4
     " terraformの場合 coc#refreshを呼ぶ
-    autocmd BufNewFile,BufRead *.tf :call coc#refresh()<CR>
+    autocmd BufNewFile,BufRead *.tf :call coc#refresh()
 augroup END
 

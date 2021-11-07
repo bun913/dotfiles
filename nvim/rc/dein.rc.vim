@@ -25,3 +25,5 @@ endif
 " }}}
 "
 "
+" deinのrecashをコマンド化
+command! Recache :call dein#recache_runtimepath()

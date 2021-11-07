@@ -3,7 +3,7 @@
   "suggest.preferCompleteThanJumpPlaceholder": true,
   "eslint.autoFixOnSave": true,
   "eslint.format.enable": true,
-  "tsserver.enableJavascript": false,
+  "tsserver.enableJavascript": true,
   "eslint.workingDirectories": [
     {
       "mode": "auto"
