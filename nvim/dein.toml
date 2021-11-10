@@ -13,14 +13,14 @@ repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
 [[plugins]] # カラースキーマ
-repo = 'w0ng/vim-hybrid'
+repo = 'sainnhe/sonokai'
 hook_add = '''
-  set background=dark
-  " colorscheme 設定は source 後に行う必要があるので VimEnter で行う。
-  " 但し Colorscheme イベントの発生が抑制されないよう nented を付ける。
-  au MyAutoCmd VimEnter * nested colorscheme hybrid
-  " 事前にiterm用のcolor-prisetを用意しておく必要がある
-  " https://gist.github.com/luan/6362811
+  set termguicolors
+  " the configuration options should be placed before `colorscheme sonokai`
+  let g:sonokai_style = 'andromeda'
+  let g:sonokai_enable_italic = 1
+  let g:sonokai_disable_italic_comment = 1
+  colorscheme sonokai
 '''
 
 [[plugins]] # Languageサーバープロトコル
@@ -165,9 +165,6 @@ repo = 'yuttie/comfortable-motion.vim'
 repo = 'LeafCage/vimhelpgenerator'
 
 [[plugins]]
-repo = 'bun913/min-todo.vim'
-
-[[plugins]]
 repo = 'Yggdroot/indentLine'
 
 [[plugins]]
@@ -241,4 +238,12 @@ rev = 'release'
 
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
+
+[[plugins]]
+repo = 'APZelos/blamer.nvim'
+hook_add = '''
+let g:blamer_enabled = 1
+let g:blamer_delay = 500
+'''
+
 
