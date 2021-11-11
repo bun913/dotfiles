@@ -206,6 +206,7 @@ endfunction
 augroup FernEvents
   autocmd!
   autocmd FileType fern call FernInit()
+  autocmd VimEnter * ++nested Fern . -drawer -stay -keep -toggle -reveal=% -width=40
 augroup END
 let g:fern#disable_default_mappings = 1
 '''

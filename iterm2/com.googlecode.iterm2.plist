@@ -241,6 +241,17 @@
 			<key>Version</key>
 			<integer>1</integer>
 		</dict>
+		<key>0x31-0x100000-0x12</key>
+		<dict>
+			<key>Action</key>
+			<integer>11</integer>
+			<key>Label</key>
+			<string></string>
+			<key>Text</key>
+			<string>0x23 0x4c</string>
+			<key>Version</key>
+			<integer>1</integer>
+		</dict>
 		<key>0x5b-0x100000-0x1e</key>
 		<dict>
 			<key>Action</key>
@@ -1078,6 +1089,8 @@
 	<false/>
 	<key>SoundForEsc</key>
 	<false/>
+	<key>SwitchWindowModifier</key>
+	<integer>9</integer>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
 	<key>findMode_iTerm</key>

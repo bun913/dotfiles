@@ -64,11 +64,6 @@ nnoremap <Leader>re :%s;\<<C-R><C-W>\>;g<Left><Left>;
 " Google翻訳のショートカット
 let g:translate_source = "en"
 let g:translate_target = "ja"
-" TODOコマンドのマッピング定義
-nnoremap <C-c> :ToggleTask<CR>
-imap <C-c> <ESC>:CreateTask<CR>A
-nnoremap <Leader>t :tabe ~/todo.md<CR>
-command! AR call mintodo#ArchiveTasks()
 " 置換コマンドをrgにして.gitignoreも無視
 if executable('rg')
     let &grepprg = 'rg --vimgrep --hidden'
@@ -79,6 +74,15 @@ endif
 nnoremap <Tab>l :+tabmove<CR>
 nnoremap <Tab>h :-tabmove<CR>
 " ファイルタイプごとのタブ設定など
+" TODO系タスクはmdファイルでのみ読み込み
+function! TodoSetting() abort
+  " TODOコマンドのマッピング定義
+  nnoremap <C-c> :ToggleTask<CR>
+  imap <C-c> <ESC>:CreateTask<CR>A
+  nnoremap <Leader>t :tabe ~/todo.md<CR>
+  command! AR call mintodo#ArchiveTasks()
+endfunction
+
 augroup fileTypeIndent
     autocmd!
     autocmd BufNewFile,BufRead *.py setlocal et tabstop=4 softtabstop=4 shiftwidth=4
@@ -90,5 +94,16 @@ augroup fileTypeIndent
     autocmd BufNewFile,BufRead *.go  setlocal noet tabstop=4 softtabstop=4 shiftwidth=4
     " terraformの場合 coc#refreshを呼ぶ
     autocmd BufNewFile,BufRead *.tf :call coc#refresh()
+    autocmd BufNewFile,BufRead *.md :call TodoSetting()
 augroup END
 
+" タブを移動させる
+nnoremap <Leader><Leader>1 1gt
+nnoremap <Leader><Leader>2 2gt
+nnoremap <Leader><Leader>3 3gt
+nnoremap <Leader><Leader>4 4gt
+nnoremap <Leader><Leader>5 5gt
+nnoremap <Leader><Leader>6 6gt
+nnoremap <Leader><Leader>7 7gt
+nnoremap <Leader><Leader>8 8gt
+nnoremap <Leader><Leader>9 9gt
