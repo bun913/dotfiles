@@ -267,7 +267,7 @@ let g:blamer_delay = 500
 
 [[plugins]]
 repo = 'bun913/min-todo.vim'
-hook_add= '''
+hook_add = '''
 " TODO系タスクはmdファイルでのみ読み込み
 nnoremap <C-c> :ToggleTask<CR>
 imap <C-c> <ESC>:CreateTask<CR>A
@@ -279,5 +279,16 @@ command! AR call mintodo#ArchiveTasks()
 repo = 'heavenshell/vim-pydocstring'
 hook_add = '''
 nmap <silent> <C-_> <Plug>(pydocstring)
+'''
+
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+# deno のインストールが必要
+
+[[plugins]]
+repo = 'skanehira/denops-docker.vim'
+hook_add = '''
+command! DI :DockerImages
+command! DC :DockerContainers
 '''
 
