@@ -157,6 +157,11 @@ repo = 'bronson/vim-trailing-whitespace'
 
 [[plugins]]
 repo = 'skanehira/translate.vim'
+hook_add = '''
+" Google翻訳のショートカット
+let g:translate_source = "en"
+let g:translate_target = "ja"
+'''
 
 [[plugins]]
 repo = 'yuttie/comfortable-motion.vim'
@@ -206,7 +211,7 @@ endfunction
 augroup FernEvents
   autocmd!
   autocmd FileType fern call FernInit()
-  autocmd VimEnter * ++nested Fern . -drawer -stay -keep -toggle -reveal=% -width=40
+  autocmd VimEnter * ++nested Fern . -drawer -stay -toggle -reveal=% -width=40
 augroup END
 let g:fern#disable_default_mappings = 1
 '''
@@ -236,6 +241,19 @@ merged = 0
 [[plugins]]
 repo = 'yuki-yano/fzf-preview.vim'
 rev = 'release'
+hook_add = '''
+let g:fzf_preview_directory_files_command = 'rg --files --hidden -g "!.git/"'
+let g:fzf_preview_custom_processes = {
+        \ 'open-file': {
+        \   'ctrl-o': 'FzfPreviewOpenFileCtrlO',
+        \   'ctrl-q': 'FzfPreviewOpenFileCtrlQ',
+        \   'ctrl-t': 'FzfPreviewOpenFileCtrlT',
+        \   'ctrl-v': 'FzfPreviewOpenFileCtrlV',
+        \   'ctrl-x': 'FzfPreviewOpenFileCtrlX',
+        \   'enter': 'FzfPreviewOpenFileCtrlT'
+      \   }
+      \ }
+'''
 
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
@@ -247,4 +265,19 @@ let g:blamer_enabled = 1
 let g:blamer_delay = 500
 '''
 
+[[plugins]]
+repo = 'bun913/min-todo.vim'
+hook_add= '''
+" TODO系タスクはmdファイルでのみ読み込み
+nnoremap <C-c> :ToggleTask<CR>
+imap <C-c> <ESC>:CreateTask<CR>A
+nnoremap <Leader>t :tabe ~/todo.md<CR>
+command! AR call mintodo#ArchiveTasks()
+'''
+
+[[plugins]]
+repo = 'heavenshell/vim-pydocstring'
+hook_add = '''
+nmap <silent> <C-_> <Plug>(pydocstring)
+'''
 

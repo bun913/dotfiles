@@ -6,6 +6,6 @@ let g:openbrowser_browser_commands = [ {'name': 'google-chrome-stable',  'args':
 
 [[plugins]]
 repo = 'iamcco/markdown-preview.nvim'
-on_ft = [ 'markdown', 'pandoc.markdown', 'rmd' ]
+on_ft = ['markdown', 'pandoc.markdown', 'rmd']
 build = 'sh -c "cd app & yarn install" '
 

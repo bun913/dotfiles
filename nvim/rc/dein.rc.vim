@@ -9,7 +9,8 @@ endif
 let g:dein#auto_recache = 1
 let &runtimepath = s:dein_repo_dir .",". &runtimepath
 " プラグイン読み込み＆キャッシュ作成
-let s:toml_file = g:vim_home .'/dein.toml'
+let s:toml_dir = g:vim_home
+let s:toml_file = s:toml_dir .'/dein.toml'
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
   call dein#load_toml(s:toml_file)
@@ -27,3 +28,4 @@ endif
 "
 " deinのrecashをコマンド化
 command! Recache :call dein#recache_runtimepath()
+

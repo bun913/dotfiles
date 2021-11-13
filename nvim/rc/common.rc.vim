@@ -55,15 +55,12 @@ nmap <Esc><Esc> :nohlsearch<CR><Esc>
 " undoの永続
 set undofile
 " init.vimを開くショートカット
-nnoremap <Leader>. :tabe ~/.config/nvim/init.vim
+nnoremap <Leader>. :tabe ~/.config/nvim/rc/common.rc.vim
 " gitの差分を表示
 let g:gitgutter_highlight_lines = 1
 nnoremap sm :DoShowMarks<CR>
 " 置換のカーソル位置を調整
 nnoremap <Leader>re :%s;\<<C-R><C-W>\>;g<Left><Left>;
-" Google翻訳のショートカット
-let g:translate_source = "en"
-let g:translate_target = "ja"
 " 置換コマンドをrgにして.gitignoreも無視
 if executable('rg')
     let &grepprg = 'rg --vimgrep --hidden'
@@ -74,14 +71,6 @@ endif
 nnoremap <Tab>l :+tabmove<CR>
 nnoremap <Tab>h :-tabmove<CR>
 " ファイルタイプごとのタブ設定など
-" TODO系タスクはmdファイルでのみ読み込み
-function! TodoSetting() abort
-  " TODOコマンドのマッピング定義
-  nnoremap <C-c> :ToggleTask<CR>
-  imap <C-c> <ESC>:CreateTask<CR>A
-  nnoremap <Leader>t :tabe ~/todo.md<CR>
-  command! AR call mintodo#ArchiveTasks()
-endfunction
 
 augroup fileTypeIndent
     autocmd!
@@ -94,7 +83,6 @@ augroup fileTypeIndent
     autocmd BufNewFile,BufRead *.go  setlocal noet tabstop=4 softtabstop=4 shiftwidth=4
     " terraformの場合 coc#refreshを呼ぶ
     autocmd BufNewFile,BufRead *.tf :call coc#refresh()
-    autocmd BufNewFile,BufRead *.md :call TodoSetting()
 augroup END
 
 " タブを移動させる
