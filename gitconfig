@@ -6,6 +6,5 @@
   diffFilter = delta --color-only
 [delta]
     line-numbers = true
-    side-by-side = true
     syntax-theme = GitHub
 
