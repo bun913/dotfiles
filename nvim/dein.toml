@@ -281,6 +281,7 @@ repo = 'heavenshell/vim-pydocstring'
 build = 'make install'
 hook_add = '''
 nmap <silent> <C-_> <Plug>(pydocstring)
+let g:pydocstring_formatter = 'google'
 '''
 
 [[plugins]]
