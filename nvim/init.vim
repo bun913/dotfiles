@@ -49,5 +49,5 @@ endif
 
 
 " MarkdownPreviw
-command MP MarkdownPreview "MPでプレビューを開く
+command MP MarkdownPreview
 

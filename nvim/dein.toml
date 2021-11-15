@@ -242,7 +242,8 @@ merged = 0
 repo = 'yuki-yano/fzf-preview.vim'
 rev = 'release'
 hook_add = '''
-let g:fzf_preview_directory_files_command = 'rg --files --hidden -g "!.git/"'
+let g:fzf_preview_directory_files_command = 'rg --files --no-ignore --hidden -g "!.git/"'
+let g:fzf_preview_filelist_command = 'rg --files --no-ignore --hidden --follow --no-messages --glob "!.git/*" --glob \!"* *"'
 let g:fzf_preview_custom_processes = {
         \ 'open-file': {
         \   'ctrl-o': 'FzfPreviewOpenFileCtrlO',
@@ -290,5 +291,11 @@ repo = 'skanehira/denops-docker.vim'
 hook_add = '''
 command! DI :DockerImages
 command! DC :DockerContainers
+'''
+
+[[plugins]]
+repo = 'aklt/plantuml-syntax'
+hook_add = '''
+au FileType plantuml command! OpenUml :!open -a /Applications/Google\ Chrome.app --args --disable-web-security --user-data-dir="dummy" file://%
 '''
 
