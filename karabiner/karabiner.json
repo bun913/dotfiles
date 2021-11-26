@@ -270,16 +270,6 @@
                 },
                 {
                     "from": {
-                        "key_code": "left_option"
-                    },
-                    "to": [
-                        {
-                            "key_code": "left_command"
-                        }
-                    ]
-                },
-                {
-                    "from": {
                         "apple_vendor_top_case_key_code": "keyboard_fn"
                     },
                     "to": [
