@@ -135,12 +135,6 @@ hook_add = '''
 repo = 'brooth/far.vim'
 
 [[plugins]]
-repo = 'Yggdroot/LeaderF'
-# hook_add = """
-# ./install.sh
-# """
-
-[[plugins]]
 repo = 'stephpy/vim-php-cs-fixer'
 
 [[plugins]]

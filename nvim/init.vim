@@ -30,7 +30,6 @@ if exists('g:vscode')
     call s:source_rc('common.rc.vim')
     " deinの設定ファイル
     call s:source_rc('dein.rc.vim')
-    " leaderfの設定ファイル
     call dein#add('asvetliakov/vim-easymotion')
 else
     " ordinary neovim
