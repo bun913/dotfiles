@@ -38,6 +38,74 @@ function ide() {
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
 export PATH=$PATH:~/.bin
+# atcodet test
+alias test='oj t -c "python3 main.py" -d ./tests/'
+alias py='python3 main.py'
+# 現在時刻をUnixTimeStampに変換
+alias uni='date -j +%s'
+# Terraformの不具合修正
+# https://github.com/hashicorp/terraform/issues/27350
+export GODEBUG=asyncpreemptoff=1
+# Goenvを利用するためのパス設定
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+eval "$(goenv init -)"
+export PATH="$GOROOT/bin:$PATH"
+export PATH="$PATH:$GOPATH/bin"
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+# vimとtmuxの移動をいい感じにする
+function _left-pane() {
+  tmux select-pane -L
+}
+zle -N left-pane _left-pane
+
+function _down-pane() {
+  tmux select-pane -D
+}
+zle -N down-pane _down-pane
+
+function _up-pane() {
+  tmux select-pane -U
+}
+zle -N up-pane _up-pane
+
+function _right-pane() {
+  tmux select-pane -R
+}
+zle -N right-pane _right-pane
+
+function _backspace-or-left-pane() {
+  if [[ $#BUFFER -gt 0 ]]; then
+    zle backward-delete-char
+  elif [[ ! -z ${TMUX} ]]; then
+    zle left-pane
+  fi
+}
+zle -N backspace-or-left-pane _backspace-or-left-pane
+
+function _kill-line-or-up-pane() {
+  if [[ $#BUFFER -gt 0 ]]; then
+    zle kill-line
+  elif [[ ! -z ${TMUX} ]]; then
+    zle up-pane
+  fi
+}
+zle -N kill-line-or-up-pane _kill-line-or-up-pane
+
+function _accept-line-or-down-pane() {
+  if [[ $#BUFFER -gt 0 ]]; then
+    zle accept-line
+  elif [[ ! -z ${TMUX} ]]; then
+    zle down-pane
+  fi
+}
+zle -N accept-line-or-down-pane _accept-line-or-down-pane
+
+bindkey '^k' kill-line-or-up-pane
+bindkey '^l' right-pane
+bindkey '^h' backspace-or-left-pane
+bindkey '^j' accept-line-or-down-pane
+

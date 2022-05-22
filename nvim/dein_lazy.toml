@@ -1,21 +1,15 @@
 [[plugins]] # カーソル位置のコンテキストのftを判定するライブラリ
 repo = 'Shougo/context_filetype.vim'
 
-[[plagins]]
-repo = 'tyru/open-browser.vim'
-hook_add = '''
-let g:openbrowser_browser_commands = [ {'name': 'google-chrome-stable',  'args': ['{browser}', '{uri}']} ]
-'''
-
 [[plugins]]
 # lexima
-repo = 'cohama/lexima.vim'
 on_i = 1
+repo = 'cohama/lexima.vim'
 
 [[plugins]]
-repo = 'iamcco/markdown-preview.nvim'
-on_ft = ['markdown', 'pandoc.markdown', 'rmd']
 build = 'sh -c "cd app & yarn install" '
+on_ft = ['markdown', 'pandoc.markdown', 'rmd']
+repo = 'iamcco/markdown-preview.nvim'
 
 [[plugins]]
 repo = 'machakann/vim-sandwich'
@@ -39,13 +33,12 @@ repo = 'bronson/vim-trailing-whitespace'
 repo = 'Yggdroot/indentLine'
 
 [[plugins]]
-repo = 'thinca/vim-qfreplace'
 hook_add = '''
 nnoremap qf :Qfreplace<CR>
 '''
+repo = 'thinca/vim-qfreplace'
 
 [[plugins]]
-repo = 'bun913/min-todo.vim'
 hook_add = '''
 " TODO系タスクはmdファイルでのみ読み込み
 nnoremap <C-c> :ToggleTask<CR>
@@ -53,11 +46,11 @@ imap <C-c> <ESC>:CreateTask<CR>A
 nnoremap <Leader>t :tabe ~/todo.md<CR>
 command! AR call mintodo#ArchiveTasks()
 '''
+repo = 'bun913/min-todo.vim'
 
 [[plugins]]
-repo = 'kdheepak/lazygit.nvim'
 hook_add = '''
 nnoremap <silent> <leader>gg :LazyGit<CR>
 let g:lazygit_use_neovim_remote = 0
 '''
-
+repo = 'kdheepak/lazygit.nvim'

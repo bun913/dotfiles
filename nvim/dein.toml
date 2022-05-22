@@ -132,3 +132,6 @@ require('telescope').setup{
 EOF
 '''
 repo = 'nvim-telescope/telescope.nvim'
+
+[[plugins]]
+repo = 'christoomey/vim-tmux-navigator'
