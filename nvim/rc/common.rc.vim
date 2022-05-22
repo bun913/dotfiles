@@ -1,6 +1,5 @@
 " 共通設定
 " jjでescと同じ効果を
-inoremap <silent> jj <ESC>
 set number
 set smartindent
 set clipboard=unnamed
@@ -95,3 +94,7 @@ nnoremap <Leader><Leader>6 6gt
 nnoremap <Leader><Leader>7 7gt
 nnoremap <Leader><Leader>8 8gt
 nnoremap <Leader><Leader>9 9gt
+"
+" MarkdownPreviw
+command MP MarkdownPreview
+

@@ -1,19 +1,67 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
-[[plugins]] # カーソル位置のコンテキストに合わせてftを切り替える
-repo = 'osyo-manga/vim-precious'
-depends = ['context_filetype.vim']
+# LSP (Language Server Protocol)
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
 
-[[plugins]] # カーソル位置のコンテキストのftを判定するライブラリ
-repo = 'Shougo/context_filetype.vim'
+# LSP settings
+[[plugins]]
+hook_add = '''
+command LSP LspManageServers
+" Leader fmでフォーマット
+nnoremap <Leader>fm <cmd>LspDocumentFormat<cr>
+" 保存時自動フォーマット
+autocmd BufWritePre <buffer> LspDocumentFormatSync
+" 補完表示時のEnterで改行をしない
+inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
+set completeopt=menuone,noinsert
+inoremap <expr><C-n> pumvisible() ? "<Down>" : "<C-n>"
+inoremap <expr><C-p> pumvisible() ? "<Up>" : "<C-p>"
+'''
+repo = 'mattn/vim-lsp-settings'
 
-[[plugins]] # toml syntax
-repo = 'cespare/vim-toml'
-on_ft = 'toml'
+# Auto completion for LSP
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+
+# Auto completion for LSP
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
+# tree-sitter(syntax,indent)
+
+[[plugins]]
+hook_add = '''
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    disable = {
+      'lua',
+      'c_sharp'
+    },
+    ensure_installed = {
+      "python",
+      "go",
+      "js",
+      "ts",
+      "json",
+      "toml",
+      "yml"
+    },
+    indent = {
+      enable  = true
+    },
+    autotag = {
+      enable = true
+    }
+  }
+}
+EOF
+'''
+repo = 'nvim-treesitter/nvim-treesitter'
 
 [[plugins]] # カラースキーマ
-repo = 'sainnhe/sonokai'
 hook_add = '''
   set termguicolors
   " the configuration options should be placed before `colorscheme sonokai`
@@ -28,47 +76,11 @@ hook_add = '''
   let g:sonokai_transparent_background = 1
   colorscheme sonokai
 '''
+repo = 'sainnhe/sonokai'
 
-[[plugins]] # Languageサーバープロトコル
-repo = 'neoclide/coc.nvim'
-rev = 'release'
-build = '''
-  git checkout release
-'''
-hook_add = '''
-  inoremap <silent><expr> <TAB>
-        \ pumvisible() ? "\<C-n>" :
-        \ <SID>check_back_space() ? "\<TAB>" :
-        \ coc#refresh()
-  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-  function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
-  endfunction
-  nmap <silent> gd <Plug>(coc-definition)
-  nmap <silent> gy <Plug>(coc-type-definition)
-  nmap <silent> gi <Plug>(coc-implementation)
-  nmap <silent> gr <Plug>(coc-references)
-  nmap <silent> rn <Plug>(coc-rename)
-  nmap <silent> <space>l :<C-u>CocList<cr>
-  nmap <silent> <space>h :<C-u>call CocAction('doHover')<cr>
-  nmap <silent> <space>fm <Plug>(coc-format)
-'''
-# 例えば絵文字のインストール :CocInstall coc-emoji
-# すでにインストールしているもの
-# :CocInstall coc-python
-# :CocInstall coc-lists
-# :CocInstall cos-json
-
-[[plugins]]
-repo = 'machakann/vim-sandwich'
-
-[[plugins]]
-repo = 'easymotion/vim-easymotion'
-
-[[plugins]]
-repo = 'tpope/vim-commentary'
+[[plugins]] # カーソル位置のコンテキストに合わせてftを切り替える
+depends = ['context_filetype.vim']
+repo = 'osyo-manga/vim-precious'
 
 [[plugins]]
 repo = 'vim-airline/vim-airline'
@@ -84,204 +96,39 @@ repo = 'ryanoasis/vim-devicons'
 # nerd-fontをインストールして、terminalで設定する必要がある。
 # ファイラーでアイコンを表示する設定
 
+# telescope.nvimが依存
 [[plugins]]
-# チートシート
-repo = 'reireias/vim-cheatsheet'
-# let g:cheatsheet#cheat_file = '~/.config/nvim/cheatsheet.md'
+repo = 'nvim-lua/plenary.nvim'
 
+# fzf-previewのようにプレビューを導入
+# brew install luajit
+# brew install rg
+# brew install fd
 [[plugins]]
-repo = 'simeji/winresizer'
-
-[[plugins]]
-# vimでgit操作ができるやつ
-repo = 'tpope/vim-fugitive'
-
-
-[[plugins]]
-repo = 'roxma/nvim-yarp'
-if = '''! has('nvim')'''
-
-[[plugins]]
-repo = 'roxma/vim-hug-neovim-rpc'
-if = '''! has('nvim')'''
-
-[[plugins]]
-repo = 'jiangmiao/auto-pairs'
-
-[[plugins]]
-repo = 'brooth/far.vim'
-
-[[plugins]]
-repo = 'stephpy/vim-php-cs-fixer'
-
-[[plugins]]
-repo = 'othree/eregex.vim'
-
-[[plugins]]
-repo = 'airblade/vim-gitgutter'
 hook_add = '''
-let g:gitgutter_highlight_lines = 1
+" Find files using Telescope command-line sugar.
+nnoremap <C-p> <cmd>Telescope find_files<cr>
+nnoremap <C-g> <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" Using Lua functions
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+lua <<EOF
+require('telescope').setup{
+  defaults = {
+    mappings = {
+      i = {
+        ["<esc>"] = require('telescope.actions').close,
+        ["<C-a>"] = require('telescope.actions').send_to_qflist + require('telescope.actions').open_qflist,
+        ["<C-q>"] = require('telescope.actions').send_selected_to_qflist + require('telescope.actions').open_qflist
+      }
+    }
+  }
+}
+EOF
 '''
-
-[[plugins]]
-repo = 'tpope/vim-repeat'
-
-[[plugins]]
-repo = 'jacquesbh/vim-showmarks'
-
-[[plugins]]
-repo = 'bronson/vim-trailing-whitespace'
-
-[[plugins]]
-repo = 'skanehira/translate.vim'
-hook_add = '''
-" Google翻訳のショートカット
-let g:translate_source = "en"
-let g:translate_target = "ja"
-'''
-
-[[plugins]]
-repo = 'yuttie/comfortable-motion.vim'
-
-[[plugins]]
-repo = 'LeafCage/vimhelpgenerator'
-
-[[plugins]]
-repo = 'Yggdroot/indentLine'
-
-[[plugins]]
-repo = 'lambdalisue/fern.vim'
-hook_add = '''
-nnoremap <C-n> :Fern . -reveal=% -drawer -toggle -width=40<CR>
-let g:fern#renderer = "nerdfont"
-function! FernInit() abort
-    nmap <buffer> v <Plug>(fern-action-open:side)
-    nmap <buffer> M <Plug>(fern-action-new-dir)
-    nmap <buffer> ; <Plug>(fern-action-hidden:toggle)
-    nmap <buffer> - <Plug>(fern-action-mark:toggle)
-    vmap <buffer> - <Plug>(fern-action-mark:toggle)
-    nmap <buffer> C <Plug>(fern-action-clipboard-copy)
-    nmap <buffer> X <Plug>(fern-action-clipboard-move)
-    nmap <buffer> P <Plug>(fern-action-clipboard-paste)
-    nmap <buffer> h <Plug>(fern-action-collapse)
-    nmap <buffer> c <Plug>(fern-action-copy)
-    nmap <buffer> <leader>h <Plug>(fern-action-leave)
-    nmap <buffer> m <Plug>(fern-action-move)
-    nmap <buffer> N <Plug>(fern-action-new-file)
-    nmap <buffer> <cr> <Plug>(fern-action-open-or-enter)
-    nmap <buffer> l <Plug>(fern-action-open-or-expand)
-    nmap <buffer> s <Plug>(fern-action-open:select)
-    nmap <buffer> <CR> <Plug>(fern-action-open:tabedit)
-    nmap <buffer> o <Plug>(fern-action-open:tabedit)
-    nmap <buffer> <C-l> <Plug>(fern-action-reload)
-    nmap <buffer> r <Plug>(fern-action-rename)
-    nmap <buffer> i <Plug>(fern-action-reveal)
-    nmap <buffer> D <Plug>(fern-action-trash)
-    nmap <buffer> y <Plug>(fern-action-yank)
-    nmap <buffer> gr <Plug>(fern-action-grep)
-    nmap <buffer> d <Plug>(fern-action-remove)
-    nmap <buffer> B <Plug>(fern-action-save-as-bookmark)
-    nmap <buffer> cd <Plug>(fern-action-tcd)
-    nmap <buffer> <C-h> <C-w>h
-    nmap <buffer> <C-l> <C-w>l
-endfunction
-augroup FernEvents
-  autocmd!
-  autocmd FileType fern call FernInit()
-  " autocmd VimEnter * ++nested Fern . -drawer -stay -toggle -reveal=% -width=40
-augroup END
-let g:fern#disable_default_mappings = 1
-'''
-
-[[plugins]]
-repo = 'lambdalisue/fern-git-status.vim'
-
-[[plugins]]
-repo = 'lambdalisue/nerdfont.vim'
-
-[[plugins]]
-repo = 'lambdalisue/fern-renderer-nerdfont.vim'
-
-[[plugins]]
-repo = 'thinca/vim-qfreplace'
-hook_add = '''
-nnoremap qf :Qfreplace<CR>
-'''
-
-[[plugins]]
-repo = 'junegunn/fzf'
-build = '''
-./install --all
-'''
-merged = 0
-
-[[plugins]]
-repo = 'yuki-yano/fzf-preview.vim'
-rev = 'release'
-hook_add = '''
-let g:fzf_preview_directory_files_command = 'rg --files --no-ignore --hidden -g "!.git/"'
-let g:fzf_preview_filelist_command = 'rg --files --no-ignore --hidden --follow --no-messages --glob "!.git/*" --glob \!"* *"'
-let g:fzf_preview_custom_processes = {
-        \ 'open-file': {
-        \   'ctrl-o': 'FzfPreviewOpenFileCtrlO',
-        \   'ctrl-q': 'FzfPreviewOpenFileCtrlQ',
-        \   'ctrl-t': 'FzfPreviewOpenFileCtrlT',
-        \   'ctrl-v': 'FzfPreviewOpenFileCtrlV',
-        \   'ctrl-x': 'FzfPreviewOpenFileCtrlX',
-        \   'enter': 'FzfPreviewOpenFileCtrlT'
-      \   }
-      \ }
-'''
-
-[[plugins]]
-repo = 'lambdalisue/gina.vim'
-
-[[plugins]]
-repo = 'APZelos/blamer.nvim'
-hook_add = '''
-let g:blamer_enabled = 1
-let g:blamer_delay = 500
-'''
-
-[[plugins]]
-repo = 'bun913/min-todo.vim'
-hook_add = '''
-" TODO系タスクはmdファイルでのみ読み込み
-nnoremap <C-c> :ToggleTask<CR>
-imap <C-c> <ESC>:CreateTask<CR>A
-nnoremap <Leader>t :tabe ~/todo.md<CR>
-command! AR call mintodo#ArchiveTasks()
-'''
-
-[[plugins]]
-repo = 'heavenshell/vim-pydocstring'
-build = 'make install'
-hook_add = '''
-nmap <silent> <C-_> <Plug>(pydocstring)
-let g:pydocstring_formatter = 'google'
-'''
-
-[[plugins]]
-repo = 'vim-denops/denops.vim'
-# deno のインストールが必要
-
-[[plugins]]
-repo = 'skanehira/denops-docker.vim'
-hook_add = '''
-command! DI :DockerImages
-command! DC :DockerContainers
-'''
-
-[[plugins]]
-repo = 'aklt/plantuml-syntax'
-hook_add = '''
-au FileType plantuml command! OpenUml :!open -a /Applications/Google\ Chrome.app --args --disable-web-security --user-data-dir="dummy" file://%
-'''
-
-
-[[plugins]]
-repo = 'kdheepak/lazygit.nvim'
-hook_add = '''
-nnoremap <silent> <leader>gg :LazyGit<CR>
-let g:lazygit_use_neovim_remote = 0
-'''
+repo = 'nvim-telescope/telescope.nvim'
