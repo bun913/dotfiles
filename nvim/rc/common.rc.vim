@@ -1,5 +1,4 @@
 " 共通設定
-" jjでescと同じ効果を
 set number
 set smartindent
 set clipboard=unnamed
@@ -7,31 +6,15 @@ set tabstop=2
 set cursorline
 set expandtab
 set shiftwidth=2
-" インデントはスマートインデント
 set smartindent
-" 折り返し時に表示行単位での移動できるようにする
 nnoremap j gj
 nnoremap k gk
-" 行頭・行末の移動
 nnoremap H ^
 nnoremap L $
-" Move window
-nmap <Space> <C-w>w
-map s<left> <C-w>h
-map s<up> <C-w>k
-map s<down> <C-w>j
-map s<right> <C-w>l
-map sh <C-w>h
-map sk <C-w>k
-map sj <C-w>j
-map sl <C-w>l
-" syntax disable
 set synmaxcol=300
 " 不可視文字を可視化(タブが「▸-」と表示される)
 set list
 set listchars=tab:»-
-" Tab文字を半角スペースにする
-" set expandtab
 " 行頭以外のTab文字の表示幅（スペースいくつ分）
 set tabstop=2
 " 行頭でのTab文字の表示幅
@@ -55,8 +38,6 @@ nmap <Esc><Esc> :nohlsearch<CR><Esc>
 set undofile
 " init.vimを開くショートカット
 nnoremap <Leader>. :tabe ~/.config/nvim/rc/common.rc.vim
-" gitの差分を表示
-let g:gitgutter_highlight_lines = 1
 nnoremap sm :DoShowMarks<CR>
 " 置換のカーソル位置を調整
 nnoremap <Leader>re :%s;\<<C-R><C-W>\>;g<Left><Left>;
@@ -65,10 +46,12 @@ if executable('rg')
     let &grepprg = 'rg --vimgrep --hidden'
     set grepformat=%f:%l:%c:%m
 endif
-" nnoremap <C-g> :%s###g<Left><Left>
-" タブを移動させる
-nnoremap <Tab>l :+tabmove<CR>
-nnoremap <Tab>h :-tabmove<CR>
+
+" バッファの移動をメタキーで
+nnoremap <silent> <M-h> :bprev<CR>
+nnoremap <silent> <M-l> :bnext<CR>
+
+
 " ファイルタイプごとのタブ設定など
 
 augroup fileTypeIndent
@@ -84,17 +67,6 @@ augroup fileTypeIndent
     autocmd BufNewFile,BufRead *.tf :call coc#refresh()
 augroup END
 
-" タブを移動させる
-nnoremap <Leader><Leader>1 1gt
-nnoremap <Leader><Leader>2 2gt
-nnoremap <Leader><Leader>3 3gt
-nnoremap <Leader><Leader>4 4gt
-nnoremap <Leader><Leader>5 5gt
-nnoremap <Leader><Leader>6 6gt
-nnoremap <Leader><Leader>7 7gt
-nnoremap <Leader><Leader>8 8gt
-nnoremap <Leader><Leader>9 9gt
-"
 " MarkdownPreviw
 command MP MarkdownPreview
 

@@ -30,6 +30,8 @@ repo = 'prabirshrestha/asyncomplete.vim'
 repo = 'prabirshrestha/asyncomplete-lsp.vim'
 # tree-sitter(syntax,indent)
 
+# treesitter
+## ハイライト・インデント等の設定
 [[plugins]]
 hook_add = '''
 lua <<EOF
