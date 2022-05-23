@@ -401,6 +401,10 @@
 	<false/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
+	<key>LeftCommand</key>
+	<integer>2</integer>
+	<key>LeftOption</key>
+	<integer>2</integer>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -728,6 +732,17 @@
 					<key>Text</key>
 					<string>0x7f</string>
 				</dict>
+				<key>0x9-0x100000-0x30</key>
+				<dict>
+					<key>Action</key>
+					<integer>22</integer>
+					<key>Label</key>
+					<string></string>
+					<key>Text</key>
+					<string></string>
+					<key>Version</key>
+					<integer>1</integer>
+				</dict>
 				<key>0xf700-0x220000</key>
 				<dict>
 					<key>Action</key>
@@ -953,6 +968,8 @@
 					<string>[1;5F</string>
 				</dict>
 			</dict>
+			<key>Left Option Key Changeable</key>
+			<true/>
 			<key>Link Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -979,11 +996,11 @@
 			<key>Normal Font</key>
 			<string>Menlo-Regular 16</string>
 			<key>Option Key Sends</key>
-			<integer>0</integer>
+			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
 			<false/>
 			<key>Right Option Key Sends</key>
-			<integer>0</integer>
+			<integer>2</integer>
 			<key>Rows</key>
 			<integer>25</integer>
 			<key>Screen</key>
@@ -1023,7 +1040,7 @@
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
 			<key>Transparency</key>
-			<real>0.0</real>
+			<real>0.33034408244680852</real>
 			<key>Unlimited Scrollback</key>
 			<false/>
 			<key>Use Bold Font</key>

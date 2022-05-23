@@ -50,6 +50,7 @@ endif
 " バッファの移動をメタキーで
 nnoremap <silent> <M-h> :bprev<CR>
 nnoremap <silent> <M-l> :bnext<CR>
+nnoremap <silent> <M-w> :bd<CR>
 
 
 " ファイルタイプごとのタブ設定など

@@ -32,8 +32,28 @@ export XDG_CACHE_HOME=~/.cache
 
 # tmuxをお気に入りのサイズで開く
 function ide() {
-  tmux split-window -v -p 40
+  # 左右半分にする
+  tmux split-window -h
+  # 左側にシェルを3つ作る
+  tmux select-pane -t 0
+  tmux split-window -v
+  tmux split-window -v
+  tmux split-window -v
+  # 左側のリサイズ
+  tmux select-pane -t 0
+  tmux resize-pane -y 30
+  tmux select-pane -t 1
+  tmux resize-pane -y 30
+  tmux select-pane -t 2
+  tmux resize-pane -y 30
+  # 時計を固定表示
+  tmux select-pane -t 3
+  tmux clock-mode
+  tmux select-pane -t 0
 }
+# tmuxの画面分割のアライアス
+alias vs="tmux split-window -h"
+alias sp="tmux split-window -v"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
