@@ -125,7 +125,9 @@
                   {
                     "type": "frontmost_application_if",
                     "bundle_identifiers": [
-                      "^com\\.googlecode\\.iterm2"
+                      "^com\\.googlecode\\.iterm2",
+                      "^io\\.alacritty",
+                      "^com\\.github\\.wez.wezterm"
                     ]
                   }
                 ]
@@ -157,7 +159,9 @@
                   {
                     "type": "frontmost_application_if",
                     "bundle_identifiers": [
-                      "^com\\.googlecode\\.iterm2"
+                      "^com\\.googlecode\\.iterm2",
+                      "^io\\.alacritty",
+                      "^com\\.github\\.wez.wezterm"
                     ]
                   }
                 ]
