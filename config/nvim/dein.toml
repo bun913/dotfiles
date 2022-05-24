@@ -186,8 +186,24 @@ EOF
 repo = 'is0n/fm-nvim'
 
 [[plugins]]
-repo = 'mattn/vim-sonictemplate'
 hook_add = '''
 nnoremap <C-t> :Template 
 inoremap <C-t> <Esc>:Template 
 '''
+repo = 'mattn/vim-sonictemplate'
+
+###
+# Git
+###
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+
+[[plugins]]
+hook_add = '''
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option('sources', {
+\ 'gitcommit': ['look'],
+\})
+'''
+repo = 'ujihisa/neco-look'
