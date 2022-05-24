@@ -1,0 +1,3 @@
+set icons
+map d delete
+map <enter> editor
