@@ -130,3 +130,5 @@ bindkey '^l' right-pane
 bindkey '^h' backspace-or-left-pane
 bindkey '^j' accept-line-or-down-pane
 
+# ctrl+aを使えるように
+bindkey -e
