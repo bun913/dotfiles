@@ -12,12 +12,6 @@ on_ft = ['markdown', 'pandoc.markdown', 'rmd']
 repo = 'iamcco/markdown-preview.nvim'
 
 [[plugins]]
-repo = 'machakann/vim-sandwich'
-
-[[plugins]]
-repo = 'tpope/vim-commentary'
-
-[[plugins]]
 repo = 'jiangmiao/auto-pairs'
 
 [[plugins]]
@@ -37,16 +31,6 @@ hook_add = '''
 nnoremap qf :Qfreplace<CR>
 '''
 repo = 'thinca/vim-qfreplace'
-
-[[plugins]]
-hook_add = '''
-" TODO系タスクはmdファイルでのみ読み込み
-nnoremap <C-c> :ToggleTask<CR>
-imap <C-c> <ESC>:CreateTask<CR>A
-nnoremap <Leader>t :tabe ~/todo.md<CR>
-command! AR call mintodo#ArchiveTasks()
-'''
-repo = 'bun913/min-todo.vim'
 
 [[plugins]]
 hook_add = '''
