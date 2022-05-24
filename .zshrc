@@ -51,6 +51,26 @@ function ide() {
   tmux clock-mode
   tmux select-pane -t 0
 }
+function mini_ide() {
+  # 左右半分にする
+  tmux split-window -h
+  # 左側にシェルを3つ作る
+  tmux select-pane -t 0
+  tmux split-window -v
+  tmux split-window -v
+  tmux split-window -v
+  # 左側のリサイズ
+  tmux select-pane -t 0
+  tmux resize-pane -y 10
+  tmux select-pane -t 1
+  tmux resize-pane -y 10
+  tmux select-pane -t 2
+  tmux resize-pane -y 10
+  # 時計を固定表示
+  tmux select-pane -t 3
+  tmux clock-mode
+  tmux select-pane -t 0
+}
 # tmuxの画面分割のアライアス
 alias vs="tmux split-window -h"
 alias sp="tmux split-window -v"
@@ -131,4 +151,6 @@ bindkey '^h' backspace-or-left-pane
 bindkey '^j' accept-line-or-down-pane
 
 # ctrl+aを使えるように
-bindkey -e
+# bindkey -e
+# starshipでプロンプトを改造
+eval "$(starship init zsh)"
