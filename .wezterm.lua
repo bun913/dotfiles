@@ -12,6 +12,6 @@ return {
   },
   font_size = 18.0,
   color_scheme = "GitHub Dark",
-  font = wezterm.font("JetBrainsMono Nerd Font"),
+  font = wezterm.font("JetBrains Mono"),
   window_background_opacity = 0.8,
 }
