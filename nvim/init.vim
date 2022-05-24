@@ -1,7 +1,4 @@
-if !&compatible
-  set nocompatible
-endif
-
+" TODO: ファイラーの設定 + タブではなくWindoでうまいこと開発する方法
 " reset augroup
 augroup MyAutoCmd
   autocmd!
@@ -24,29 +21,16 @@ function! s:source_rc(rc_file_name)
     endif
 endfunction
 
+call s:source_rc('common.rc.vim')
+call s:source_rc('dein.rc.vim')
+
 " 共通設定ファイル
-if exists('g:vscode')
-    " VSCode extension
-    call s:source_rc('common.rc.vim')
-    " deinの設定ファイル
-    call s:source_rc('dein.rc.vim')
-    call dein#add('asvetliakov/vim-easymotion')
-else
-    " ordinary neovim
-    call s:source_rc('common.rc.vim')
-    " deinの設定ファイル
-    call s:source_rc('dein.rc.vim')
-    " vim-arilinesの設定ファイル
-    call s:source_rc('airline.rc.vim')
-    " vim-cheatsheetの設定ファイル
-    call s:source_rc('cheatsheet.rc.vim')
-    " coc.nvimの設定ファイル
-    call s:source_rc('coc.rc.vim')
-    " far.vimの設定ファイル
-    call s:source_rc('far.rc.vim')
-endif
-
-
-" MarkdownPreviw
-command MP MarkdownPreview
+ if exists('g:vscode')
+     " VSCode extension
+     call s:source_rc('common.rc.vim')
+     " deinの設定ファイル
+ else
+     " vim-arilinesの設定ファイル
+     call s:source_rc('airline.rc.vim')
+ endif
 
