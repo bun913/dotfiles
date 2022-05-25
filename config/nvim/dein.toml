@@ -166,6 +166,7 @@ hook_add = '''
   let g:floaterm_autoclose = 1
 
   nnoremap <expr> <M-t> floaterm#buflist#first() == -1 ? '<Cmd>FloatermNew<CR>' : '<Cmd>FloatermToggle<CR>'
+  nnoremap <Leader>t :FloatermNew! test<CR>
   command! T :FloatermToggle -autoclose=1<CR>
 '''
 on_cmd = 'FloatermNew'
@@ -213,3 +214,9 @@ hook_add = '''
 command! H :DiffviewFileHistory
 '''
 repo = 'sindrets/diffview.nvim'
+
+[[plugins]]
+hook_add = '''
+nnoremap <leader>r :QuickRun<CR>
+'''
+repo = 'thinca/vim-quickrun'
