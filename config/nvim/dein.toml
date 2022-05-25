@@ -207,3 +207,9 @@ call deoplete#custom#option('sources', {
 \})
 '''
 repo = 'ujihisa/neco-look'
+
+[[plugins]]
+hook_add = '''
+command! H :DiffviewFileHistory
+'''
+repo = 'sindrets/diffview.nvim'
