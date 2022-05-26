@@ -173,18 +173,18 @@ on_cmd = 'FloatermNew'
 on_func = 'floaterm#'
 repo = 'voldikss/vim-floaterm'
 
-[[plugins]]
-hook_add = '''
-nnoremap <C-n> <cmd>Lf<CR>
-lua << EOF
-require('fm-nvim').setup{
-  mappings = {
-    edit        = "<enter>"
-  }
-}
-EOF
-'''
-repo = 'is0n/fm-nvim'
+# [[plugins]]
+# hook_add = '''
+# nnoremap <C-n> <cmd>Lf<CR>
+# lua << EOF
+# require('fm-nvim').setup{
+#   mappings = {
+#     edit        = "<enter>"
+#   }
+# }
+# EOF
+# '''
+# repo = 'is0n/fm-nvim'
 
 [[plugins]]
 hook_add = '''
@@ -196,18 +196,6 @@ repo = 'mattn/vim-sonictemplate'
 ###
 # Git
 ###
-
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-
-[[plugins]]
-hook_add = '''
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option('sources', {
-\ 'gitcommit': ['look'],
-\})
-'''
-repo = 'ujihisa/neco-look'
 
 [[plugins]]
 hook_add = '''
