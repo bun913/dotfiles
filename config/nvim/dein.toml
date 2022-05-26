@@ -1,6 +1,10 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
+###
+# LSP
+###
+
 # LSP (Language Server Protocol)
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
@@ -28,7 +32,10 @@ repo = 'prabirshrestha/asyncomplete.vim'
 # Auto completion for LSP
 [[plugins]]
 repo = 'prabirshrestha/asyncomplete-lsp.vim'
-# tree-sitter(syntax,indent)
+
+###
+# Syntax / Higlight
+###
 
 # treesitter
 ## ハイライト・インデント等の設定
@@ -64,6 +71,11 @@ EOF
 '''
 repo = 'nvim-treesitter/nvim-treesitter'
 
+###
+# Theme
+###
+
+
 [[plugins]] # カラースキーマ
 hook_add = '''
   set termguicolors
@@ -81,10 +93,6 @@ hook_add = '''
 '''
 repo = 'sainnhe/sonokai'
 
-[[plugins]] # カーソル位置のコンテキストに合わせてftを切り替える
-depends = ['context_filetype.vim']
-repo = 'osyo-manga/vim-precious'
-
 [[plugins]]
 repo = 'vim-airline/vim-airline'
 
@@ -98,6 +106,11 @@ repo = 'vim-airline/vim-airline-themes'
 repo = 'ryanoasis/vim-devicons'
 # nerd-fontをインストールして、terminalで設定する必要がある。
 # ファイラーでアイコンを表示する設定
+
+###
+# fuzzy-finder
+###
+
 
 # telescope.nvimが依存
 [[plugins]]
@@ -138,11 +151,18 @@ EOF
 '''
 repo = 'nvim-telescope/telescope.nvim'
 
+###
+# Tmux
+###
+
+
 [[plugins]]
 repo = 'christoomey/vim-tmux-navigator'
 
-[[plugins]]
-repo = 'obaland/vfiler-column-devicons'
+###
+# Editor Utlity
+###
+
 
 [[plugins]]
 repo = 'machakann/vim-sandwich'
@@ -155,7 +175,7 @@ hook_add = '''
 " TODO系タスクはmdファイルでのみ読み込み
 nnoremap <C-c> :ToggleTask<CR>
 imap <C-c> <ESC>:CreateTask<CR>A
-nnoremap <Leader>t :enew ~/todo.md<CR>
+command! TODO :new ~/todo.md
 command! AR call mintodo#ArchiveTasks()
 '''
 repo = 'bun913/min-todo.vim'
@@ -173,18 +193,6 @@ on_cmd = 'FloatermNew'
 on_func = 'floaterm#'
 repo = 'voldikss/vim-floaterm'
 
-# [[plugins]]
-# hook_add = '''
-# nnoremap <C-n> <cmd>Lf<CR>
-# lua << EOF
-# require('fm-nvim').setup{
-#   mappings = {
-#     edit        = "<enter>"
-#   }
-# }
-# EOF
-# '''
-# repo = 'is0n/fm-nvim'
 
 [[plugins]]
 hook_add = '''
@@ -208,3 +216,25 @@ hook_add = '''
 nnoremap <leader>r :QuickRun<CR>
 '''
 repo = 'thinca/vim-quickrun'
+
+# 差分を表示
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+# Gdiffで差分が超便利
+# commitIDを後ろ煮付けるとその差分がわかる
+[[plugins]]
+repo = "tpope/vim-fugitive"
+
+###
+# Filer
+###
+
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+
+[[plugins]]
+repo = 'kristijanhusak/defx-icons'
+
+[[plugins]]
+repo = 'kristijanhusak/defx-git'

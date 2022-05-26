@@ -27,10 +27,9 @@ call s:source_rc('dein.rc.vim')
 " 共通設定ファイル
  if exists('g:vscode')
      " VSCode extension
-     call s:source_rc('common.rc.vim')
-     " deinの設定ファイル
  else
      " vim-arilinesの設定ファイル
      call s:source_rc('airline.rc.vim')
+     call s:source_rc('defx.rc.vim')
  endif
 
