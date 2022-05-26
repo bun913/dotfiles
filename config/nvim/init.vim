@@ -33,3 +33,5 @@ call s:source_rc('dein.rc.vim')
      call s:source_rc('defx.rc.vim')
  endif
 
+" qでバッファを閉じる
+abbreviate wq w<bar>bd<CR>
