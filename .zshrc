@@ -38,18 +38,13 @@ function ide() {
   tmux select-pane -t 0
   tmux split-window -v
   tmux split-window -v
-  tmux split-window -v
   # 左側のリサイズ
   tmux select-pane -t 0
-  tmux resize-pane -y 25
+  tmux resize-pane -y 30
   tmux select-pane -t 1
-  tmux resize-pane -y 25
+  tmux resize-pane -y 30
   tmux select-pane -t 1
-  tmux resize-pane -y 25
-  # 時計を固定表示
-  tmux select-pane -t 3
-  tmux resize-pane -y 10
-  tmux clock-mode
+  tmux resize-pane -y 30
   tmux select-pane -t 0
 }
 function mini_ide() {
