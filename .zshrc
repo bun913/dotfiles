@@ -150,3 +150,4 @@ bindkey '^j' accept-line-or-down-pane
 # bindkey -e
 # starshipでプロンプトを改造
 eval "$(starship init zsh)"
+. `brew --prefix`/etc/profile.d/z.sh
