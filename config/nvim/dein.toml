@@ -142,6 +142,9 @@ lua <<EOF
 require('telescope').setup{
   defaults = {
     mappings = {
+      n = {
+        ["<esc>"] = require('telescope.actions').close,
+      },
       i = {
         ["<esc>"] = require('telescope.actions').close,
         ["<C-a>"] = require('telescope.actions').send_to_qflist + require('telescope.actions').open_qflist,
