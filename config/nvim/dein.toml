@@ -232,6 +232,13 @@ repo = 'airblade/vim-gitgutter'
 [[plugins]]
 repo = "tpope/vim-fugitive"
 
+# Githubで当該ページを開ける超便利
+[[plugins]]
+hook_add = '''
+vnoremap gbr :GBrowse<CR>
+'''
+repo = "tpope/vim-rhubarb"
+
 ###
 # Filer
 ###
