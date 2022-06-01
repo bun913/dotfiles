@@ -35,3 +35,4 @@ call s:source_rc('dein.rc.vim')
 
 " qでバッファを閉じる
 abbreviate wq w<bar>bd<CR>
+abbreviate q bd<CR>
