@@ -1,2 +1,5 @@
 node_modules/
 .DS_Store
+session.json
+config.json
+config/karabiner/automatic_backups/
