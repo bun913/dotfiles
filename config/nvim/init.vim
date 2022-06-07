@@ -34,5 +34,19 @@ call s:source_rc('dein.rc.vim')
  endif
 
 " qでバッファを閉じる
-abbreviate wq w<bar>bd<CR>
-abbreviate q bd<CR>
+abbreviate wq w<bar>call CloseBuffer()<CR>
+abbreviate q call CloseBuffer()<CR>
+
+function! BufferNum() abort
+   return  len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+endfunction
+
+function! CloseBuffer() abort
+  let l:bufnum = BufferNum()
+  if l:bufnum > 1
+    :bd
+  else
+    :q
+  endif
+endfunction
+
