@@ -59,8 +59,9 @@ command MP MarkdownPreview
 """""""""""""
 " バッファを閉じる系のUtil
 """""""""""""
-cnoremap <silent>wq w<bar>call CloseBuffer(0)
-cnoremap <silent>q call CloseBuffer(0)
+cnoremap <silent>wq w<bar>call CloseBuffer(0)<CR>
+cnoremap <silent>q call CloseBuffer(0)<CR>
+cnoremap <silent>q! call CloseBuffer(1)<CR>
 
 function! BufferNum() abort
    return  len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
@@ -71,6 +72,9 @@ function! CloseBuffer(force) abort
   if l:bufnum > 1
     :bd
   else
+    if a:force > 0
+      :q!
+    endif
     :q
   endif
 endfunction
