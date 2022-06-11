@@ -157,6 +157,23 @@ EOF
 '''
 repo = 'nvim-telescope/telescope.nvim'
 
+# telescope-frequencyが依存
+[[plugins]]
+repo = 'tami5/sqlite.lua'
+
+# telescope-frequencyが依存
+[[plugins]]
+repo = 'kyazdani42/nvim-web-devicons'
+
+[[plugins]]
+hook_add = '''
+nnoremap <C-f> <cmd>Telescope frecency<cr>
+lua << EOF
+require"telescope".load_extension("frecency")
+EOF
+'''
+repo = 'nvim-telescope/telescope-frecency.nvim'
+
 ###
 # Tmux
 ###
