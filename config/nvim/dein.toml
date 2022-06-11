@@ -249,6 +249,11 @@ repo = 'thinca/vim-quickrun'
 
 # 差分を表示
 [[plugins]]
+hook_add = '''
+nmap ghp <Plug>(GitGutterPreviewHunk)
+nmap ghs <Plug>(GitGutterStageHunk)
+nmap ghu <Plug>(GitGutterUndoHunk)
+'''
 repo = 'airblade/vim-gitgutter'
 
 # Gdiffで差分が超便利

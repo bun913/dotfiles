@@ -47,11 +47,13 @@ if executable('rg')
     set grepformat=%f:%l:%c:%m
 endif
 
-" バッファの移動をメタキーで
+" VSCodeと同様の動きをするためにバッファの移動をメタキーで
 nnoremap <silent> <M-h> :bprev<CR>
 nnoremap <silent> <M-l> :bnext<CR>
 nnoremap <silent> <M-w> :bd<CR>
-
+" vim独自の動きでバッファを移動
+nnoremap <nowait> <Leader>l :bnext<CR>
+nnoremap <nowait> <Leader>h :bprev<CR>
 " MarkdownPreviw
 command MP MarkdownPreview
 
