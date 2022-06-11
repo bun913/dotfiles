@@ -151,3 +151,6 @@ bindkey '^j' accept-line-or-down-pane
 # starshipでプロンプトを改造
 eval "$(starship init zsh)"
 . `brew --prefix`/etc/profile.d/z.sh
+
+# vimdiffをnvimで
+alias vimdiff='nvim -d '

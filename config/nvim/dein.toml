@@ -236,9 +236,6 @@ repo = 'mattn/vim-sonictemplate'
 ###
 
 [[plugins]]
-hook_add = '''
-command! H :DiffviewFileHistory
-'''
 repo = 'sindrets/diffview.nvim'
 
 [[plugins]]
@@ -261,15 +258,26 @@ repo = 'airblade/vim-gitgutter'
 [[plugins]]
 hook_add = '''
 nnoremap gb :Git blame<cr>
+nnoremap gd :Gdiff<cr>
+nnoremap gh :DiffviewFileHistory<cr>
 '''
 repo = "tpope/vim-fugitive"
 
 # Githubで当該ページを開ける超便利
 [[plugins]]
 hook_add = '''
-vnoremap gbr :GBrowse<CR>
+vnoremap gb :GBrowse<CR>
 '''
 repo = "tpope/vim-rhubarb"
+
+# コンフリクトをわかりやすく表示
+[[plugins]]
+hook_add = '''
+lua << EOF
+require('git-conflict').setup()
+EOF
+'''
+repo = 'akinsho/git-conflict.nvim'
 
 ###
 # Filer
