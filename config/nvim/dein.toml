@@ -247,6 +247,9 @@ repo = 'airblade/vim-gitgutter'
 # Gdiffで差分が超便利
 # commitIDを後ろ煮付けるとその差分がわかる
 [[plugins]]
+hook_add = '''
+nnoremap gb :Git blame<cr>
+'''
 repo = "tpope/vim-fugitive"
 
 # Githubで当該ページを開ける超便利
