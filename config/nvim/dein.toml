@@ -94,13 +94,20 @@ hook_add = '''
 repo = 'sainnhe/sonokai'
 
 [[plugins]]
-repo = 'vim-airline/vim-airline'
+hook_add = '''
+lua << END
+require('lualine').setup()
+END
+'''
+repo = 'nvim-lualine/lualine.nvim'
 
 [[plugins]]
-repo = 'vim-airline/vim-airline-themes'
-# 先にpowerlinesフォントを入れておく必要がある
-# あとターミナルの見た目は、NerdfontsをインストールしてSauce Code Pro Nerd Font Completeが良い感じ
-# https://blog.htkyama.org/vim_airline
+hook_add = '''
+lua << EOF
+require("bufferline").setup{}
+EOF
+'''
+repo = 'akinsho/bufferline.nvim'
 
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'

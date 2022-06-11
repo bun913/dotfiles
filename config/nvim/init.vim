@@ -28,7 +28,5 @@ call s:source_rc('dein.rc.vim')
  if exists('g:vscode')
      " VSCode extension
  else
-     " vim-arilinesの設定ファイル
-     call s:source_rc('airline.rc.vim')
      call s:source_rc('defx.rc.vim')
  endif
