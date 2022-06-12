@@ -255,6 +255,7 @@ repo = 'airblade/vim-gitgutter'
 
 # Gdiffで差分が超便利
 # commitIDを後ろ煮付けるとその差分がわかる
+# gsの画面でdvで差分を見ながら編集なども可能
 [[plugins]]
 hook_add = '''
 nnoremap gs :Gstatus<cr>
@@ -286,8 +287,22 @@ hook_add = '''
 lua << EOF
 require"octo".setup()
 EOF
+nnoremap <Leader>gprl :Octo pr list<CR>
 '''
 repo = 'pwntester/octo.nvim'
+
+###
+# Mark
+###
+[[plugins]]
+hook_add = '''
+lua << EOF
+require'marks'.setup {
+  default_mappings = true,
+}
+EOF
+'''
+repo = 'chentoast/marks.nvim'
 
 ###
 # Filer
