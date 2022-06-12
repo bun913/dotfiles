@@ -287,8 +287,22 @@ hook_add = '''
 lua << EOF
 require"octo".setup()
 EOF
+nnoremap <Leader>gprl :Octo pr list<CR>
 '''
 repo = 'pwntester/octo.nvim'
+
+###
+# Mark
+###
+[[plugins]]
+hook_add = '''
+lua << EOF
+require'marks'.setup {
+  default_mappings = true,
+}
+EOF
+'''
+repo = 'chentoast/marks.nvim'
 
 ###
 # Filer
