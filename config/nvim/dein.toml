@@ -285,9 +285,29 @@ repo = 'akinsho/git-conflict.nvim'
 [[plugins]]
 hook_add = '''
 lua << EOF
-require"octo".setup()
+require"octo".setup({
+  mappings = {
+    submit_win = {
+      approve_review = { lhs = "<Leader>gra", desc = "approve review" },
+      comment_review = { lhs = "<Leader>grm", desc = "comment review" },
+      request_changes = { lhs = "<Leader>grc", desc = "request changes review" },
+    },
+  }
+})
 EOF
+" pr shortcuts
 nnoremap <Leader>gprl :Octo pr list<CR>
+nnoremap <Leader>gprc  :Octo pr create<CR>
+nnoremap <Leader>gpre  :Octo pr edit 
+nnoremap <Leader>gprs  :Octo pr search<CR>
+" issue shortcuts
+nnoremap <Leader>gil :Octo issue list<CR>
+nnoremap <Leader>gic :Octo issue create<CR>
+nnoremap <Leader>gie :Octo issue edit 
+nnoremap <Leader>gis :Octo issue search<CR>
+" review
+nnoremap <Leader>grs :Octo review start 
+nnoremap <Leader>gre :Octo review submit<CR>
 '''
 repo = 'pwntester/octo.nvim'
 
