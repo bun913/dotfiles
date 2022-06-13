@@ -31,15 +31,45 @@ import math
 
 
 def is_prime(n: int) -> bool:
+    """
+    素数判定(LogN)
+    """
     for i in range(2, int(math.sqrt(n))+1):
         if n % i == 0:
             return False
     return True
 
 
-def permutation(n, r):
+def permutation(n, r) -> int:
+    """
+    順列の計算
+    """
     return math.factorial(n) // math.factorial(n-r)
 
 
-def combination(n, r):
+def combination(n, r) -> int:
+    """
+    組み合わせ数の計算
+    """
     return permutation(n, r) // math.factorial(r)
+
+
+def rot_n(s, n) -> str:
+    """
+    アルファベットsをn文字分後にずらす
+    """
+    answer = ''
+    for letter in s:
+        answer += chr(ord('A') + (ord(letter)-ord('A')+n) % 26)
+    return answer
+
+
+def derot_n(s, n) -> str:
+    """
+    アルファベットsをn文字分戻す
+    """
+    answer = ''
+    for letter in s:
+        answer += chr(ord('Z') - (ord('Z')-ord(letter)+n) % 26)
+
+    return answer
