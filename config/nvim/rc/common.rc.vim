@@ -58,7 +58,8 @@ nnoremap <nowait> <Leader>l :bnext<CR>
 nnoremap <nowait> <Leader>h :bprev<CR>
 " MarkdownPreviw
 command MP MarkdownPreview
-
+" jjでインサートモードを抜ける
+inoremap <silent> jj <ESC>
 
 """""""""""""
 " バッファを閉じる系のUtil
