@@ -249,6 +249,9 @@ repo = 'voldikss/vim-floaterm'
 hook_add = '''
 nnoremap <C-t> :Template 
 inoremap <C-t> <Esc>:Template 
+let g:sonictemplate_vim_template_dir = [
+      \ '~/dotfiles/config/nvim/vim-sonic-template'
+      \]
 '''
 repo = 'mattn/vim-sonictemplate'
 
