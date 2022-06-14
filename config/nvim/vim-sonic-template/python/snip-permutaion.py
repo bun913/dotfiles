@@ -1,3 +1,5 @@
+import math
+
 def permutation(n, r) -> int:
     """
     順列の計算
