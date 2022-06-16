@@ -81,3 +81,7 @@ function! CloseBuffer() abort
   endif
 endfunction
 
+"""""""""""""
+" バッファで開いているファイルのディレクトリをクリップボードに送る
+"""""""""""""
+nnoremap <silent><Leader>yy :let @* = expand('%:p:h')<CR>
