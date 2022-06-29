@@ -1,5 +1,6 @@
 # エディターをnvimに設定
 export EDITOR=nvim
+export VISUAL=nvim
 # プラグイン
 source ~/.zplug/init.zsh
 zplug "zsh-users/zsh-syntax-highlighting"

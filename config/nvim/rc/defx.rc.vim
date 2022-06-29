@@ -1,4 +1,4 @@
-nnoremap <silent> <C-n> :Defx<CR>
+nnoremap <silent> <Leader>n :Defx<CR>
 autocmd FileType defx call s:defx_my_settings()
 	function! s:defx_my_settings() abort
 	  " Define mappings
@@ -48,7 +48,7 @@ autocmd FileType defx call s:defx_my_settings()
 	  nnoremap <silent><buffer><expr> ~
 	  \ defx#do_action('cd')
 " Quit
-	  nnoremap <silent><buffer><expr> <C-n>
+	  nnoremap <silent><buffer><expr> <Leader>n
 	  \ defx#do_action('quit')
 	  nnoremap <silent><buffer><expr> q
 	  \ defx#do_action('quit')
