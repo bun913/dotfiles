@@ -223,16 +223,6 @@ repo = 'tpope/vim-commentary'
 
 [[plugins]]
 hook_add = '''
-" TODO系タスクはmdファイルでのみ読み込み
-nnoremap <C-c> :ToggleTask<CR>
-imap <C-c> <ESC>:CreateTask<CR>A
-command! TODO :new ~/todo.md
-command! AR call mintodo#ArchiveTasks()
-'''
-repo = 'bun913/min-todo.vim'
-
-[[plugins]]
-hook_add = '''
   " exit してもウィンドウが残ると閉じないといけないので
   let g:floaterm_autoclose = 1
 
@@ -359,5 +349,4 @@ repo = 'Shougo/defx.nvim'
 repo = 'kristijanhusak/defx-icons'
 
 [[plugins]]
-repo = 'kristijanhusak/defx-git'
 repo = 'kristijanhusak/defx-git'
