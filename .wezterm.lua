@@ -13,5 +13,5 @@ return {
   font_size = 20.0,
   color_scheme = "GitHub Dark",
   font = wezterm.font("Ricty Diminished"),
-  window_background_opacity = 0.8,
+  window_background_opacity = 0.9,
 }
