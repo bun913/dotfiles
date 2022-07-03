@@ -203,14 +203,6 @@ EOF
 repo = 'nvim-telescope/telescope-frecency.nvim'
 
 ###
-# Tmux
-###
-
-
-[[plugins]]
-repo = 'christoomey/vim-tmux-navigator'
-
-###
 # Editor Utlity
 ###
 

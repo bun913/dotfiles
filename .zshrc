@@ -72,6 +72,7 @@ function mini_ide() {
 alias vs="tmux split-window -h"
 alias sp="tmux split-window -v"
 alias clock="tmux clock-mode && tmux select-pane -t 0"
+bindkey -e
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
