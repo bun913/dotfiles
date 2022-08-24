@@ -62,26 +62,22 @@ command MP MarkdownPreview
 inoremap <silent> jj <ESC>
 
 """""""""""""
-" バッファを閉じる系のUtil
-"""""""""""""
-cnoremap <silent>wq w<bar>call CloseBuffer()<CR>
-cnoremap <silent>q call CloseBuffer()<CR>
-cnoremap <silent>q! call CloseBuffer()<CR>
-
-function! BufferNum() abort
-   return  len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
-endfunction
-
-function! CloseBuffer() abort
-  let l:bufnum = BufferNum()
-  if l:bufnum > 1
-    :bd!
-  else
-    :q!
-  endif
-endfunction
-
-"""""""""""""
 " バッファで開いているファイルのディレクトリをクリップボードに送る
 """""""""""""
-nnoremap <silent><Leader>yy :let @* = expand('%:p:h')<CR>
+" 共通設定ファイル
+if exists('g:vscode')
+  nnoremap <silent><Leader>yy :call v:lua.GetDirPath()<CR>
+" /Users/imaizumi.taiki/workspace/blog/articles/cdk/__vscode_neovim__-file:///Users/imaizumi.taiki/workspace/blog/articles/cdk/workshop/lambda
+else
+  nnoremap <silent><Leader>yy :let @* = expand('%:p:h')<CR>
+endif
+
+
+lua << EOF
+function GetDirPath()
+  local all_path = vim.fn.expand("%:p:h")
+  local dir_path = vim.fn.split(all_path, '-file://')
+  local cmd_str = "let @* = "..'"'..dir_path[2]..'"'
+  vim.cmd(cmd_str)
+end
+EOF
