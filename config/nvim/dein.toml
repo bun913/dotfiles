@@ -372,6 +372,10 @@ EOF
 '''
 repo = 'nvim-telescope/telescope-file-browser.nvim'
 
+###
+# Util
+###
+
 [[plugins]]
 hook_add = '''
 command MT MakeTable
@@ -379,11 +383,7 @@ command MT MakeTable
 repo = 'mattn/vim-maketable'
 
 [[plugins]]
-hook_add = '''                         
-" TODO系タスクはmdファイルでのみ読み込み
-nnoremap <M-d> :ToggleTask<CR>         
-imap <M-c> <ESC>:CreateTask<CR>A       
-command! TODO :new ~/todo.md           
-command! AR call mintodo#ArchiveTasks()
-'''
-repo = 'bun913/min-todo.vim'
+repo = 'jiangmiao/auto-pairs'
+
+[[plugins]]
+repo = 'tpope/vim-repeat'

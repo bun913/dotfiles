@@ -1,24 +1,7 @@
-[[plugins]] # カーソル位置のコンテキストのftを判定するライブラリ
-repo = 'Shougo/context_filetype.vim'
-
-[[plugins]]
-# lexima
-on_i = 1
-repo = 'cohama/lexima.vim'
-
 [[plugins]]
 build = 'sh -c "cd app & yarn install" '
 on_ft = ['markdown', 'pandoc.markdown', 'rmd']
 repo = 'iamcco/markdown-preview.nvim'
-
-[[plugins]]
-repo = 'jiangmiao/auto-pairs'
-
-[[plugins]]
-repo = 'tpope/vim-repeat'
-
-[[plugins]]
-repo = 'jacquesbh/vim-showmarks'
 
 [[plugins]]
 repo = 'bronson/vim-trailing-whitespace'
