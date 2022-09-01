@@ -25,8 +25,6 @@ call s:source_rc('common.rc.vim')
 call s:source_rc('dein.rc.vim')
 
 " 共通設定ファイル
- if exists('g:vscode')
-     " VSCode extension
- else
-     call s:source_rc('defx.rc.vim')
- endif
+if exists('g:vscode')
+else
+endif
