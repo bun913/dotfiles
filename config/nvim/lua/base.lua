@@ -1,3 +1,4 @@
+vim.wo.nu = true
 
 local options = {
   cursorline = true,
@@ -27,7 +28,6 @@ for k, v in pairs(options) do
 end
 
 -- vim.cmd 'MP MarkdownPreview'
-
 vim.cmd [[
 if executable('rg')
     let &grepprg = 'rg --vimgrep --hidden'
