@@ -1,4 +1,5 @@
 require('plugins')
+require('lsp_setting')
 require('base')
 require('keymaps')
 require('autocmds')

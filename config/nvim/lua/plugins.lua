@@ -38,11 +38,26 @@ packer.init({
  },
 })
 require'packer'.startup(function()
-  -- 起動時に読み込むプラグインは名前を書くだけです
+  -- lsp
+  use 'neovim/nvim-lspconfig'
+  use 'williamboman/mason.nvim'
+  use 'williamboman/mason-lspconfig.nvim'
   use { "wbthomason/packer.nvim" }
-  use({'prabirshrestha/vim-lsp'})
-  use({'prabirshrestha/asyncomplete.vim'})
-  use({'prabirshrestha/asyncomplete-lsp.vim'})
+  use "hrsh7th/nvim-cmp"
+  use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/vim-vsnip"
+  -- use({'prabirshrestha/vim-lsp'})
+  -- use({'prabirshrestha/asyncomplete.vim'})
+  -- use({'prabirshrestha/asyncomplete-lsp.vim'})
+  -- thema
+  use({
+    'projekt0n/github-nvim-theme',
+    config = function()
+      require('github-theme').setup({
+        -- ...
+      })
+    end
+  })
   -- line系
   use({'akinsho/bufferline.nvim'})
   use({'ryanoasis/vim-devicons'})
