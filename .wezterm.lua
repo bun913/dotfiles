@@ -10,7 +10,7 @@ return {
       action="DisableDefaultAssignment"
     }
   },
-  font_size = 20.0,
+  font_size = 24.0,
   color_scheme = "GitHub Dark",
   font = wezterm.font("Ricty Diminished"),
   window_background_opacity = 0.9,
