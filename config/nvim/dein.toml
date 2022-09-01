@@ -1,13 +1,6 @@
-[[plugins]]
-repo = 'Shougo/dein.vim'
-
 ###
 # LSP
 ###
-
-# LSP (Language Server Protocol)
-[[plugins]]
-repo = 'prabirshrestha/vim-lsp'
 
 # LSP settings
 [[plugins]]
@@ -24,14 +17,6 @@ inoremap <expr><C-n> pumvisible() ? "<Down>" : "<C-n>"
 inoremap <expr><C-p> pumvisible() ? "<Up>" : "<C-p>"
 '''
 repo = 'mattn/vim-lsp-settings'
-
-# Auto completion for LSP
-[[plugins]]
-repo = 'prabirshrestha/asyncomplete.vim'
-
-# Auto completion for LSP
-[[plugins]]
-repo = 'prabirshrestha/asyncomplete-lsp.vim'
 
 ###
 # Syntax / Higlight
@@ -92,115 +77,6 @@ hook_add = '''
   colorscheme sonokai
 '''
 repo = 'sainnhe/sonokai'
-
-[[plugins]]
-hook_add = '''
-lua << END
-require('lualine').setup {
-sections = {
-  lualine_a = {
-    {
-      'filename',
-      file_status = true,      -- Displays file status (readonly status, modified status)
-      path = 3,                -- 0: Just the filename
-                               -- 1: Relative path
-                               -- 2: Absolute path
-                               -- 3: Absolute path, with tilde as the home directory
-
-      shorting_target = 40,    -- Shortens path to leave 40 spaces in the window
-                               -- for other components. (terrible name, any suggestions?)
-      symbols = {
-        modified = '[+]',      -- Text to show when the file is modified.
-        readonly = '[-]',      -- Text to show when the file is non-modifiable or readonly.
-        unnamed = '[No Name]', -- Text to show for unnamed buffers.
-      }
-    }
-  }
-}
-}
-END
-'''
-repo = 'nvim-lualine/lualine.nvim'
-
-[[plugins]]
-hook_add = '''
-lua << EOF
-require("bufferline").setup{}
-EOF
-'''
-repo = 'akinsho/bufferline.nvim'
-
-[[plugins]]
-repo = 'ryanoasis/vim-devicons'
-# nerd-fontをインストールして、terminalで設定する必要がある。
-# ファイラーでアイコンを表示する設定
-
-###
-# fuzzy-finder
-###
-
-
-# telescope.nvimが依存
-[[plugins]]
-repo = 'nvim-lua/plenary.nvim'
-
-# fzf-previewのようにプレビューを導入
-# brew install luajit
-# brew install rg
-# brew install fd
-[[plugins]]
-depends = ['airblade/vim-rooter']
-hook_add = '''
-" Search for Project root
-" Find files using Telescope command-line sugar.
-nnoremap <C-p> <cmd>Telescope find_files<cr>
-nnoremap <C-g> <cmd>Telescope live_grep<cr>
-" プロジェクトルートではなく現在開いているファイルを起点にファイル検索
-nnoremap <M-p> <cmd>lua require('telescope.builtin').find_files( { cwd = vim.fn.expand('%:p:h') })<cr>
-nnoremap <M-g> <cmd>lua require('telescope.builtin').live_grep( { cwd = vim.fn.expand('%:p:h') })<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
-" Using Lua functions
-nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
-lua <<EOF
-require('telescope').setup{
-  defaults = {
-    mappings = {
-      n = {
-        ["<esc>"] = require('telescope.actions').close,
-      },
-      i = {
-        ["<esc>"] = require('telescope.actions').close,
-        ["<C-a>"] = require('telescope.actions').send_to_qflist + require('telescope.actions').open_qflist,
-        ["<C-q>"] = require('telescope.actions').send_selected_to_qflist + require('telescope.actions').open_qflist
-      }
-    }
-  }
-}
-EOF
-'''
-repo = 'nvim-telescope/telescope.nvim'
-
-# telescope-frequencyが依存
-[[plugins]]
-repo = 'tami5/sqlite.lua'
-
-# telescope-frequencyが依存
-[[plugins]]
-repo = 'kyazdani42/nvim-web-devicons'
-
-[[plugins]]
-hook_add = '''
-nnoremap <C-f> <cmd>Telescope frecency<cr>
-lua << EOF
-require"telescope".load_extension("frecency")
-EOF
-'''
-repo = 'nvim-telescope/telescope-frecency.nvim'
 
 ###
 # Editor Utlity
