@@ -46,15 +46,12 @@ require'packer'.startup(function()
   use "hrsh7th/nvim-cmp"
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/vim-vsnip"
-  -- use({'prabirshrestha/vim-lsp'})
-  -- use({'prabirshrestha/asyncomplete.vim'})
-  -- use({'prabirshrestha/asyncomplete-lsp.vim'})
+  use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
   -- thema
   use({
     'projekt0n/github-nvim-theme',
     config = function()
       require('github-theme').setup({
-        -- ...
       })
     end
   })
@@ -89,7 +86,6 @@ require'packer'.startup(function()
   use({'tpope/vim-fugitive'})
   use({"tpope/vim-rhubarb"})
   use({'akinsho/git-conflict.nvim'})
-  use({'pwntester/octo.nvim'})
 
 end)
 

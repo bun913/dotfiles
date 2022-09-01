@@ -11,6 +11,8 @@ require('mason').setup({
      'luaformatter',
      -- markdown
      'markdownlint',
+     -- typescript,
+     'prettier'
   }
 })
 require('mason-lspconfig').setup_handlers({ function(server)
@@ -31,7 +33,6 @@ end })
 -- 2. build-in LSP function
 -- keyboard shortcut
 vim.keymap.set('n', 'K',  '<cmd>lua vim.lsp.buf.hover()<CR>')
-vim.keymap.set('n', 'gf', '<cmd>lua vim.lsp.buf.formatting()<CR>')
 vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
 vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
 vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
@@ -96,3 +97,29 @@ cmp.setup({
 --     { name = "cmdline" },
 --   },
 -- })
+--
+-- 4. FormatSetting
+-- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
+local null_ls = require("null-ls")
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
+null_ls.setup({
+	sources = {
+		null_ls.builtins.diagnostics.credo,
+    null_ls.builtins.formatting.black,
+    null_ls.builtins.formatting.prettier
+	},
+  on_attach = function(client, bufnr)
+      if client.supports_method("textDocument/formatting") then
+          vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+          vim.api.nvim_create_autocmd("BufWritePre", {
+              group = augroup,
+              buffer = bufnr,
+              callback = function()
+                  -- vim.lsp.buf.format({ bufnr = bufnr })
+                  vim.lsp.buf.formatting_sync()
+              end,
+          })
+      end
+  end,
+})

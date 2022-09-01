@@ -21,6 +21,8 @@ keymap("n", "<M-w>", ":bd<CR>", opts)
 keymap("n", "<Leader>l", ":bnext<CR>", opts)
 keymap("n", "<Leader>h", ":bprev<CR>", opts)
 keymap("i", "jj", "<ESC>", opts)
+-- formatter
+vim.keymap.set('n', '<Leader>fm', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 -- telescope
 keymap("n", "<C-p>", "<cmd>Telescope find_files<cr>", opts)
 keymap("n", "<C-g>", "<cmd>Telescope live_grep<cr>", opts)
