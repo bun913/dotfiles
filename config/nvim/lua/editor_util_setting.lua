@@ -9,8 +9,11 @@ require'marks'.setup {
 }
 -- floaterm
 vim.g.floaterm_autoclose  = 1
+vim.g.floaterm_width = 0.98
+vim.g.floaterm_height = 0.98
 keymap("n", "<M-t>", "<cmd>Telescope frecency<cr>", opts)
 keymap("n", "<Leader>t", ":FloatermNew! test<CR>", opts)
+keymap("n", "<Leader>gg", ":FloatermNew! lazygit<CR><CR>", opts)
 -- TODO: flowtermのtestが出てこない
 vim.cmd [[
 command! T :FloatermToggle -autoclose=1<CR>

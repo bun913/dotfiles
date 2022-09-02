@@ -33,4 +33,3 @@ keymap("n", "<Leader>gis", ":Octo issue search<CR>", opts)
 keymap("n", "<Leader>grs", ":Octo review start<CR>", opts)
 keymap("n", "<Leader>gre", ":Octo review submit<CR>", opts)
 
-
