@@ -1,5 +1,9 @@
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
+keymap("", "<Space>", "<Nop>", opts)
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 require'marks'.setup {
   default_mappings = true,
 }
@@ -7,6 +11,7 @@ require'marks'.setup {
 vim.g.floaterm_autoclose  = 1
 keymap("n", "<M-t>", "<cmd>Telescope frecency<cr>", opts)
 keymap("n", "<Leader>t", ":FloatermNew! test<CR>", opts)
+-- TODO: flowtermのtestが出てこない
 vim.cmd [[
 command! T :FloatermToggle -autoclose=1<CR>
 ]]
