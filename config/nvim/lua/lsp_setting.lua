@@ -107,7 +107,7 @@ null_ls.setup({
 	sources = {
 		null_ls.builtins.diagnostics.credo,
     null_ls.builtins.formatting.black,
-    null_ls.builtins.formatting.prettier
+    null_ls.builtins.formatting.prettier,
 	},
   on_attach = function(client, bufnr)
       if client.supports_method("textDocument/formatting") then
