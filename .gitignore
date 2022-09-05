@@ -3,3 +3,7 @@ node_modules/
 session.json
 config.json
 config/karabiner/automatic_backups/
+AWSVPNCLIENT
+configstore
+config/karabiner/assets/complex_modifications
+config/mume
