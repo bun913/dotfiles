@@ -12,8 +12,11 @@ require('mason').setup({
      -- markdown
      'markdownlint',
      -- typescript,
-     'prettier'
-  }
+     'prettier',
+     -- textlint
+     'textlint',
+  },
+  automatic_installation = true
 })
 require('mason-lspconfig').setup_handlers({ function(server)
   local opt = {
@@ -104,10 +107,16 @@ local null_ls = require("null-ls")
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 null_ls.setup({
+  debug = true,
 	sources = {
 		null_ls.builtins.diagnostics.credo,
     null_ls.builtins.formatting.black,
     null_ls.builtins.formatting.prettier,
+    null_ls.builtins.diagnostics.textlint.with({
+      filetypes = { "markdown" },
+      command={'npx', '--no-install','textlint'},
+      args={'-f', 'json', '--stdin', '--stdin-filename', '$FILENAME'} }
+    ),
 	},
   on_attach = function(client, bufnr)
       if client.supports_method("textDocument/formatting") then

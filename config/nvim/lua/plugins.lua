@@ -79,6 +79,7 @@ require 'packer'.startup(function()
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
   })
+  use({'mechatroner/rainbow_csv'})
   -- terminal
   use({ 'voldikss/vim-floaterm' })
   use({ 'thinca/vim-quickrun' })
