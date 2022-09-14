@@ -7,6 +7,7 @@ require('mason').setup({
      'pyright',
      -- json
      'jq',
+     'fixjson',
      -- lua
      'luaformatter',
      -- markdown
@@ -110,6 +111,7 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.credo,
     null_ls.builtins.formatting.black,
     null_ls.builtins.formatting.prettier,
+    -- markdown texlinting
     null_ls.builtins.diagnostics.textlint.with({
       filetypes = { "markdown" },
       condition = function(utils)
@@ -122,6 +124,7 @@ null_ls.setup({
         })
       end,
     }),
+    null_ls.builtins.formatting.fixjson
 	},
   on_attach = function(client, bufnr)
       if client.supports_method("textDocument/formatting") then
