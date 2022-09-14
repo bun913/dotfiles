@@ -13,8 +13,6 @@ require('mason').setup({
      'markdownlint',
      -- typescript,
      'prettier',
-     -- textlint
-     'textlint',
   },
   automatic_installation = true
 })
@@ -114,9 +112,16 @@ null_ls.setup({
     null_ls.builtins.formatting.prettier,
     null_ls.builtins.diagnostics.textlint.with({
       filetypes = { "markdown" },
-      command={'npx', '--no-install','textlint'},
-      args={'-f', 'json', '--stdin', '--stdin-filename', '$FILENAME'} }
-    ),
+      condition = function(utils)
+        return utils.root_has_file({
+          ".textlintrc",
+          ".textlintrc.js",
+          ".textlintrc.json",
+          ".textlintrc.yml",
+          ".textlintrc.yaml",
+        })
+      end,
+    }),
 	},
   on_attach = function(client, bufnr)
       if client.supports_method("textDocument/formatting") then
