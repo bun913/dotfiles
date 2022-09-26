@@ -8,3 +8,5 @@ configstore
 config/karabiner/assets/complex_modifications
 config/mume
 config/nvim/plugin/packer_compiled.lua
+
+config/lazygit/state.yml
