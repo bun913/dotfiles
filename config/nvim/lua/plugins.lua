@@ -48,13 +48,7 @@ require 'packer'.startup(function()
   use "hrsh7th/vim-vsnip"
   use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
   -- thema
-  use({
-    'projekt0n/github-nvim-theme',
-    config = function()
-      require('github-theme').setup({
-      })
-    end
-  })
+  use({ "EdenEast/nightfox.nvim", run = ":NightfoxCompile" })
   -- line系
   use({ 'akinsho/bufferline.nvim' })
   use({ 'ryanoasis/vim-devicons' })
@@ -98,3 +92,4 @@ require('telescope_setting')
 require('tree_sitter_setting')
 require('git_setting')
 require('editor_util_setting')
+require('color')
