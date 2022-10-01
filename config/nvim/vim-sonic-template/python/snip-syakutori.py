@@ -17,3 +17,19 @@ while l < limit:
     else:
         l += 1
 print(ans)
+
+# queを使った尺取り方
+# from collections import deque
+
+# N, K = list(map(int, input().split()))
+# A = list(map(int, input().split()))
+# q = deque()
+
+# ans = 0
+# for a in A:
+#     q.append(a)
+#     while not (a - q[0]) <= K:
+#         rm = q.popleft()
+#     lq = len(q)
+#     ans += lq - 1
+# print(ans)
