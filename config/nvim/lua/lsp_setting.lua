@@ -14,6 +14,9 @@ require('mason').setup({
      'markdownlint',
      -- typescript,
      'prettier',
+     -- yaml
+     'yaml-language-server',
+     'yamlfmt'
   },
   automatic_installation = true
 })
