@@ -10,8 +10,6 @@ require('mason').setup({
      'fixjson',
      -- lua
      'luaformatter',
-     -- markdown
-     'markdownlint',
      -- typescript,
      'prettier',
   },
@@ -50,17 +48,20 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
 )
 -- Reference highlight
-vim.cmd [[
-set updatetime=500
-highlight LspReferenceText  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
-highlight LspReferenceRead  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
-highlight LspReferenceWrite cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
-augroup lsp_document_highlight
-  autocmd!
-  autocmd CursorHold,CursorHoldI * lua vim.lsp.buf.document_highlight()
-  autocmd CursorMoved,CursorMovedI * lua vim.lsp.buf.clear_references()
-augroup END
-]]
+-- see https://sbulav.github.io/til/til-neovim-highlight-references/
+-- and https://github.com/sbulav/dotfiles/blob/master/nvim/lua/lsp/utils.lua
+
+-- vim.cmd [[
+-- set updatetime=500
+-- highlight LspReferenceText  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
+-- highlight LspReferenceRead  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
+-- highlight LspReferenceWrite cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
+-- augroup lsp_document_highlight
+--   autocmd!
+--   " autocmd CursorHold,CursorHoldI * lua vim.lsp.buf.document_highlight()
+--   autocmd CursorMoved,CursorMovedI * lua vim.lsp.buf.clear_references()
+-- augroup END
+-- ]]
 
 -- 3. completion (hrsh7th/nvim-cmp)
 local cmp = require("cmp")
@@ -110,8 +111,10 @@ null_ls.setup({
 	sources = {
 		null_ls.builtins.diagnostics.credo,
     null_ls.builtins.formatting.black,
-    null_ls.builtins.formatting.prettier,
-    -- markdown texlinting
+    null_ls.builtins.formatting.prettier.with({
+      filetypes = { "markdown" },
+    }),
+    -- markdown txlinting
     null_ls.builtins.diagnostics.textlint.with({
       filetypes = { "markdown" },
       condition = function(utils)
@@ -127,14 +130,31 @@ null_ls.setup({
     null_ls.builtins.formatting.fixjson
 	},
   on_attach = function(client, bufnr)
+      if client.supports_method "textDocument/documentHighlight" then
+        vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
+        vim.api.nvim_clear_autocmds { buffer = bufnr, group = "lsp_document_highlight" }
+        vim.api.nvim_create_autocmd("CursorHold", {
+            callback = vim.lsp.buf.document_highlight,
+            buffer = bufnr,
+            group = "lsp_document_highlight",
+            desc = "Document Highlight",
+        })
+        vim.api.nvim_create_autocmd("CursorMoved", {
+            callback = vim.lsp.buf.clear_references,
+            buffer = bufnr,
+            group = "lsp_document_highlight",
+            desc = "Clear All the References",
+        })
+      end
+
       if client.supports_method("textDocument/formatting") then
           vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
           vim.api.nvim_create_autocmd("BufWritePre", {
               group = augroup,
               buffer = bufnr,
               callback = function()
-                  -- vim.lsp.buf.format({ bufnr = bufnr })
-                  vim.lsp.buf.formatting_sync()
+                  vim.lsp.buf.format({ bufnr = bufnr })
+                  -- vim.lsp.buf.formatting_sync()
               end,
           })
       end

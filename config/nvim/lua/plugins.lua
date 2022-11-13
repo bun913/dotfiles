@@ -49,6 +49,19 @@ require 'packer'.startup(function()
   use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
   -- thema
   use({ "EdenEast/nightfox.nvim", run = ":NightfoxCompile" })
+  -- commandiline
+  use({
+  "folke/noice.nvim",
+  event = "VimEnter",
+  config = function()
+    require("noice").setup()
+  end,
+  requires = {
+    -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+    "MunifTanjim/nui.nvim",
+    "rcarriga/nvim-notify",
+    }
+  })
   -- line系
   use({ 'akinsho/bufferline.nvim' })
   use({ 'ryanoasis/vim-devicons' })
@@ -74,6 +87,8 @@ require 'packer'.startup(function()
     run = function() vim.fn["mkdp#util#install"]() end,
   })
   use({'mechatroner/rainbow_csv'})
+  -- ToDo management
+  use({'freitass/todo.txt-vim'})
   -- terminal
   use({ 'voldikss/vim-floaterm' })
   use({ 'thinca/vim-quickrun' })
