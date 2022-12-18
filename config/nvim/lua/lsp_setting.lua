@@ -11,6 +11,7 @@ require('mason').setup({
      -- lua
      'luaformatter',
      -- typescript,
+     'typescript-language-server',
      'prettier',
   },
   automatic_installation = true
@@ -23,7 +24,7 @@ require('mason-lspconfig').setup_handlers({ function(server)
     --   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
     --   vim.cmd 'autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 1000)'
     -- end,
-    capabilities = require('cmp_nvim_lsp').update_capabilities(
+    capabilities = require('cmp_nvim_lsp').default_capabilities(
       vim.lsp.protocol.make_client_capabilities()
     )
   }
@@ -112,7 +113,7 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.credo,
     null_ls.builtins.formatting.black,
     null_ls.builtins.formatting.prettier.with({
-      filetypes = { "markdown" },
+      filetypes = { "typescript" },
     }),
     -- markdown txlinting
     null_ls.builtins.diagnostics.textlint.with({
@@ -160,3 +161,30 @@ null_ls.setup({
       end
   end,
 })
+
+-- for snyk
+-- for snyk setting
+local lspconfig = require('lspconfig')
+local configs = require 'lspconfig.configs'
+local snyk_ls_path = '/Users/imaizumi.taiki/go/bin/snyk-ls'
+
+if not configs.snyk and vim.env.SNYK_TOKEN then
+    configs.snyk = {
+        default_config = {
+            cmd = {snyk_ls_path},
+            root_dir = function(name)
+                return lspconfig.util.find_git_ancestor(name) or vim.loop.os_homedir()
+            end,
+            init_options = {
+                activateSnykCode = "true",
+                organization = "classmethod-nfr-shared",
+                token = vim.env.SNYK_TOKEN
+            }
+        };
+    }
+    lspconfig.snyk.setup {
+      on_attach = on_attach
+    }
+    print [[You can find your log at $HOME/.cache/nvim/lsp.log. Please paste in a github issue under a details tag as described in the issue template.]]
+end
+

@@ -23,6 +23,8 @@ return {
     }
   },
   font_size = 24.0,
+  opacity = 0.8,
   color_scheme = "GitHub Dark",
   font = wezterm.font("Ricty Diminished"),
+  window_background_opacity = 0.8
 }
