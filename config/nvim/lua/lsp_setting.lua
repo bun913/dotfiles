@@ -128,7 +128,12 @@ null_ls.setup({
         })
       end,
     }),
-    null_ls.builtins.formatting.fixjson
+    null_ls.builtins.formatting.fixjson,
+    -- golang
+    null_ls.builtins.formatting.gofmt,
+    null_ls.builtins.formatting.goimports,
+    null_ls.builtins.formatting.goimports_reviser,
+    null_ls.builtins.formatting.golines
 	},
   on_attach = function(client, bufnr)
       if client.supports_method "textDocument/documentHighlight" then

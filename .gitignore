@@ -10,3 +10,5 @@ config/mume
 config/nvim/plugin/packer_compiled.lua
 
 config/lazygit/state.yml
+config/gh
+config/htop
