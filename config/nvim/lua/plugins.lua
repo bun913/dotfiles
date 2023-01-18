@@ -62,6 +62,14 @@ require 'packer'.startup(function()
     "rcarriga/nvim-notify",
     }
   })
+  -- filer系
+  use({
+  'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional, for file icons
+    },
+    tag = 'nightly' -- optional, updated every week. (see issue #1193)
+  })
   -- line系
   use({ 'akinsho/bufferline.nvim' })
   use({ 'ryanoasis/vim-devicons' })
@@ -73,7 +81,6 @@ require 'packer'.startup(function()
   use({ 'kyazdani42/nvim-web-devicons' })
   use({ 'nvim-telescope/telescope-frecency.nvim' })
   use({ 'nvim-treesitter/nvim-treesitter' })
-  use({ 'nvim-telescope/telescope-file-browser.nvim' })
   -- editor-util
   use({ 'machakann/vim-sandwich' })
   use({ 'tpope/vim-commentary' })
@@ -108,3 +115,4 @@ require('tree_sitter_setting')
 require('git_setting')
 require('editor_util_setting')
 require('color')
+require('nvim-tree_setting')
