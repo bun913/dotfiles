@@ -23,8 +23,9 @@ return {
     }
   },
   font_size = 24.0,
-  opacity = 0.8,
-  color_scheme = "GitHub Dark",
+  -- opacity = 0.9,
+  color_scheme = "nightfox",
+  color_scheme_dirs = {'~/.config/wezterm/colors'},
   font = wezterm.font("Ricty Diminished"),
-  window_background_opacity = 0.8
+  window_background_opacity = 0.9
 }

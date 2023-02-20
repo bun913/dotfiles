@@ -66,7 +66,15 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 
 -- 3. completion (hrsh7th/nvim-cmp)
 local cmp = require("cmp")
+local lspkind = require('lspkind')
 cmp.setup({
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = 'symbol', -- show only symbol annotations
+      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+      ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+    })
+  },
   snippet = {
     expand = function(args)
       vim.fn["vsnip#anonymous"](args.body)
@@ -74,8 +82,8 @@ cmp.setup({
   },
   sources = {
     { name = "nvim_lsp" },
-    -- { name = "buffer" },
-    -- { name = "path" },
+    { name = "path" },
+    { name = "buffer" },
   },
   mapping = cmp.mapping.preset.insert({
     ["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -112,8 +120,11 @@ null_ls.setup({
 	sources = {
 		null_ls.builtins.diagnostics.credo,
     null_ls.builtins.formatting.black,
-    null_ls.builtins.formatting.prettier.with({
-      filetypes = { "typescript" },
+    -- null_ls.builtins.formatting.prettier.with({
+    --   filetypes = { "typescript" },
+    -- }),
+    null_ls.builtins.diagnostics.eslint.with({
+        prefer_local = "node_modules/.bin", --プロジェクトローカルがある場合はそれを利用
     }),
     -- markdown txlinting
     null_ls.builtins.diagnostics.textlint.with({
@@ -133,7 +144,9 @@ null_ls.setup({
     null_ls.builtins.formatting.gofmt,
     null_ls.builtins.formatting.goimports,
     null_ls.builtins.formatting.goimports_reviser,
-    null_ls.builtins.formatting.golines
+    null_ls.builtins.formatting.golines,
+    -- git
+    null_ls.builtins.code_actions.gitsigns
 	},
   on_attach = function(client, bufnr)
       if client.supports_method "textDocument/documentHighlight" then
@@ -155,14 +168,14 @@ null_ls.setup({
 
       if client.supports_method("textDocument/formatting") then
           vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-          vim.api.nvim_create_autocmd("BufWritePre", {
-              group = augroup,
-              buffer = bufnr,
-              callback = function()
-                  vim.lsp.buf.format({ bufnr = bufnr })
-                  -- vim.lsp.buf.formatting_sync()
-              end,
-          })
+          -- vim.api.nvim_create_autocmd("BufWritePre", {
+          --     group = augroup,
+          --     buffer = bufnr,
+          --     callback = function()
+          --         vim.lsp.buf.format({ bufnr = bufnr })
+          --         -- vim.lsp.buf.formatting_sync()
+          --     end,
+          -- })
       end
   end,
 })

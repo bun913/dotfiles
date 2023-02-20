@@ -21,6 +21,8 @@ keymap("n", "<M-w>", ":bd<CR>", opts)
 keymap("n", "<Leader>l", ":bnext<CR>", opts)
 keymap("n", "<Leader>h", ":bprev<CR>", opts)
 keymap("i", "jj", "<ESC>", opts)
+keymap("n", "<Leader>gg", ":LazyGit<CR>", opts)
+
 -- formatter
 vim.keymap.set('n', '<Leader>fm', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 if vim.g.vscode == nil then

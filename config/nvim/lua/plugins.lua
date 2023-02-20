@@ -43,24 +43,24 @@ require 'packer'.startup(function()
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
   use { "wbthomason/packer.nvim", run='npm i -g textlint textlint-filter-rule-allowlist textlint-rule-preset-ja-technical-writing textlint-rule-preset-jtf-style textlint-rule-prh textlint-filter-rule-comments' }
+  use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
+  -- cmp(補完)
   use "hrsh7th/nvim-cmp"
   use "hrsh7th/cmp-nvim-lsp"
+  use 'hrsh7th/cmp-path'
+  use "hrsh7th/cmp-buffer"
+  use 'onsails/lspkind.nvim'
   use "hrsh7th/vim-vsnip"
-  use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
   -- thema
-  use({ "EdenEast/nightfox.nvim", run = ":NightfoxCompile" })
+  -- use ({ 'projekt0n/github-nvim-theme', tag = 'v0.0.7' })
+  use "EdenEast/nightfox.nvim"
   -- commandiline
   use({
-  "folke/noice.nvim",
-  event = "VimEnter",
-  config = function()
-    require("noice").setup()
-  end,
-  requires = {
-    -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-    "MunifTanjim/nui.nvim",
-    "rcarriga/nvim-notify",
-    }
+    "glepnir/lspsaga.nvim",
+    branch = "main",
+    config = function()
+        require('lspsaga').setup({})
+    end,
   })
   -- filer系
   use({
@@ -102,11 +102,16 @@ require 'packer'.startup(function()
   -- template
   use({ 'mattn/vim-sonictemplate' })
   -- git
-  use({ 'sindrets/diffview.nvim' })
-  use({ 'airblade/vim-gitgutter' })
-  use({ 'tpope/vim-fugitive' })
-  use({ "tpope/vim-rhubarb" })
-  use({ 'akinsho/git-conflict.nvim' })
+  use 'kdheepak/lazygit.nvim'
+  use {
+  'lewis6991/gitsigns.nvim',
+  }
+  -- golang
+  use { "fatih/vim-go", opt = true, ft = { "go" } }
+  -- quickfix
+  use "itchyny/vim-qfedit"
+  use {'kevinhwang91/nvim-bqf'}
+  use "thinca/vim-qfreplace"
 end)
 
 require('line_setting')
