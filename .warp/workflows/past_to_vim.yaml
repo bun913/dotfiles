@@ -1,0 +1,3 @@
+name: paste clipboard text to vim
+command: pbpaste | vim -
+description: open vim with clipboard text
