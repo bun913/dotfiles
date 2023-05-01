@@ -1,0 +1,7 @@
+---
+"workspace:activate_next_tab": cmd-l
+"terminal:focus_input": ctrl-b
+"terminal:copy_commands": ctrl-c
+"workspace:activate_prev_tab": cmd-h
+"terminal:copy": alt-c
+"terminal:copy_outputs": cmd-c
