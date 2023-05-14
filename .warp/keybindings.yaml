@@ -1,7 +1,8 @@
 ---
-"workspace:activate_next_tab": cmd-l
-"terminal:focus_input": ctrl-b
-"terminal:copy_commands": ctrl-c
+"terminal:copy_outputs": cmd-c
 "workspace:activate_prev_tab": cmd-h
 "terminal:copy": alt-c
-"terminal:copy_outputs": cmd-c
+"terminal:copy_commands": ctrl-c
+"terminal:focus_input": shift-cmd-L
+"ai_assistant_panel:focus_terminal_input": shift-cmd-L
+"workspace:activate_next_tab": cmd-l
