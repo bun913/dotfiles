@@ -120,9 +120,10 @@ null_ls.setup({
 	sources = {
 		null_ls.builtins.diagnostics.credo,
     null_ls.builtins.formatting.black,
-    -- null_ls.builtins.formatting.prettier.with({
-    --   filetypes = { "typescript" },
-    -- }),
+    null_ls.builtins.formatting.prettier.with({
+      filetypes = { "typescript", "json" },
+    }),
+    null_ls.builtins.formatting.prismaFmt,
     null_ls.builtins.diagnostics.eslint.with({
         prefer_local = "node_modules/.bin", --プロジェクトローカルがある場合はそれを利用
     }),
