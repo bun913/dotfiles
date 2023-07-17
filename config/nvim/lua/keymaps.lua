@@ -20,7 +20,6 @@ keymap("n", "<M-l>", ":bnext<CR>", opts)
 keymap("n", "<M-w>", ":bd<CR>", opts)
 keymap("n", "<Leader>l", ":bnext<CR>", opts)
 keymap("n", "<Leader>h", ":bprev<CR>", opts)
-keymap("i", "jj", "<ESC>", opts)
 keymap("n", "<Leader>gg", ":LazyGit<CR>", opts)
 
 -- formatter

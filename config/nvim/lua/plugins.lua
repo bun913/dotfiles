@@ -94,8 +94,6 @@ require 'packer'.startup(function()
     run = function() vim.fn["mkdp#util#install"]() end,
   })
   use({'mechatroner/rainbow_csv'})
-  -- ToDo management
-  use({'freitass/todo.txt-vim'})
   -- terminal
   use({ 'voldikss/vim-floaterm' })
   use({ 'thinca/vim-quickrun' })
@@ -106,6 +104,8 @@ require 'packer'.startup(function()
   use {
   'lewis6991/gitsigns.nvim',
   }
+  -- git hub copilot
+  use({'github/copilot.vim'})
   -- golang
   use { "fatih/vim-go", opt = true, ft = { "go" } }
   -- quickfix
