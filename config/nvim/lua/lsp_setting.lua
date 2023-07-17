@@ -84,6 +84,7 @@ cmp.setup({
     { name = "nvim_lsp" },
     { name = "path" },
     { name = "buffer" },
+    { name = "vsnip" },
   },
   mapping = cmp.mapping.preset.insert({
     ["<C-p>"] = cmp.mapping.select_prev_item(),

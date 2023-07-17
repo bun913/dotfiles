@@ -51,6 +51,9 @@ require 'packer'.startup(function()
   use "hrsh7th/cmp-buffer"
   use 'onsails/lspkind.nvim'
   use "hrsh7th/vim-vsnip"
+  use "hrsh7th/vim-vsnip-integ"
+  use "rafamadriz/friendly-snippets"
+  use "hrsh7th/cmp-vsnip"
   -- thema
   -- use ({ 'projekt0n/github-nvim-theme', tag = 'v0.0.7' })
   use "EdenEast/nightfox.nvim"
@@ -97,8 +100,6 @@ require 'packer'.startup(function()
   -- terminal
   use({ 'voldikss/vim-floaterm' })
   use({ 'thinca/vim-quickrun' })
-  -- template
-  use({ 'mattn/vim-sonictemplate' })
   -- git
   use 'kdheepak/lazygit.nvim'
   use {
@@ -124,3 +125,4 @@ require('git_setting')
 require('editor_util_setting')
 require('color')
 require('nvim-tree_setting')
+require('snip')
