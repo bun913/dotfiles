@@ -65,3 +65,6 @@ alias vimdiff='nvim -d '
 
 # Created by `pipx` on 2023-03-03 10:26:34
 export PATH="$PATH:/Users/imanau/.local/bin"
+
+# zellijのアライアス
+alias ze='zellij'
