@@ -68,3 +68,5 @@ export PATH="$PATH:/Users/imanau/.local/bin"
 
 # zellijのアライアス
 alias ze='zellij'
+alias accs='acc s --skip-filename -- --guess-python-interpreter pypy'
+
