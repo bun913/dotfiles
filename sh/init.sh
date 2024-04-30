@@ -1,0 +1,2 @@
+# textlint
+npm i -g textlint textlint-filter-rule-allowlist textlint-filter-rule-comments textlint-rule-aws-service-name textlint-rule-preset-ja-technical-writing textlint-rule-preset-jtf-style textlint-rule-prh textlint-rule-terminology
