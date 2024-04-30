@@ -1,3 +1,9 @@
+# Q pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
+# Copliot cli
+eval "$(github-copilot-cli alias -- "$0")"
+# VSCodeエディタでの設定
+bindkey -e
 # エディターをnvimに設定
 export EDITOR=nvim
 export VISUAL=nvim
@@ -69,4 +75,33 @@ export PATH="$PATH:/Users/imanau/.local/bin"
 # zellijのアライアス
 alias ze='zellij'
 alias accs='acc s --skip-filename -- --guess-python-interpreter pypy'
+
+
+# WebStrom
+export PATH="$PATH:/Applications/WebStorm.app/Contents/MacOS"
+p() {
+  pomodoro $1 && afplay /System/Library/Sounds/Hero.aiff && noti
+}
+
+
+# TeamsのURLをシークレットモードで開き自動入力を済ませる
+teams() {
+  node ~/workspace/raycast-teams-mtg-on-secret-window/dist/app.js "$1"
+}
+
+function ide() {
+  # 左右半分にする
+  tmux split-window -h
+  # 右側にシェルを分割
+  tmux select-pane -t 1
+  tmux split-window -v
+  tmux select-pane -t 3
+  tmux clock-mode
+  tmux select-pane -t 0
+}
+
+alias tc="tmux clock-mode"
+
+# Q post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
 
