@@ -39,11 +39,17 @@ alias vim=nvim
 alias python=python3
 # # ---- Eza (better ls) -----
 alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
-aliss cd="z"
+alias cd="z"
 alias c=clear
 alias d=docker
 alias dc=docker-compose
 alias lg="EDITOR=nvim lazygit"
+# atcodet test
+alias test='oj t -c "python main.py" -d ./tests/'
+alias accs='acc s --skip-filename -- --guess-python-interpreter pypy'
+# vimdiffをnvimで
+alias vimdiff='nvim -d '
+alias tc="tmux clock-mode"
 
 
 # 環境変数
@@ -86,47 +92,13 @@ _fzf_comprun() {
 }
 
 export PATH=$PATH:~/.bin
-# atcodet test
-alias test='oj t -c "python3 main.py" -d ./tests/'
-alias py='python3 main.py'
-# 現在時刻をUnixTimeStampに変換
-alias uni='date -j +%s'
-# Terraformの不具合修正
-# https://github.com/hashicorp/terraform/issues/27350
-export GODEBUG=asyncpreemptoff=1
-# Goenvを利用するためのパス設定
-export GOENV_ROOT="$HOME/.goenv"
-export PATH="$GOENV_ROOT/bin:$PATH"
-eval "$(goenv init -)"
-export PATH="$GOROOT/bin:$PATH"
-export PATH="$PATH:$GOPATH/bin"
 
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 
-# ctrl+aを使えるように
-# bindkey -e
-# starshipでプロンプトを改造
-eval "$(starship init zsh)"
-. `brew --prefix`/etc/profile.d/z.sh
-
-# vimdiffをnvimで
-alias vimdiff='nvim -d '
 
 # Created by `pipx` on 2023-03-03 10:26:34
 export PATH="$PATH:/Users/imanau/.local/bin"
-
-# zellijのアライアス
-alias ze='zellij'
-alias accs='acc s --skip-filename -- --guess-python-interpreter pypy'
-
-
-# WebStrom
-export PATH="$PATH:/Applications/WebStorm.app/Contents/MacOS"
-p() {
-  pomodoro $1 && afplay /System/Library/Sounds/Hero.aiff && noti
-}
-
 
 # TeamsのURLをシークレットモードで開き自動入力を済ませる
 teams() {
@@ -144,7 +116,6 @@ function ide() {
   tmux select-pane -t 0
 }
 
-alias tc="tmux clock-mode"
 
 # Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
@@ -157,3 +128,14 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
