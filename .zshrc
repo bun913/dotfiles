@@ -1,3 +1,5 @@
+# Amazon Q pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -6,7 +8,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Q pre block. Keep at the top of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 # Copliot cli
 eval "$(github-copilot-cli alias -- "$0")"
 # ---- Zoxide (better cd) ----
@@ -118,8 +119,6 @@ function ide() {
 
 
 # Q post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
-
 # fzf-git install
 source ~/fzf-git.sh/fzf-git.sh
 
@@ -128,4 +127,21 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+
+# Amazon Q post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
