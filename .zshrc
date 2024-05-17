@@ -2,6 +2,7 @@
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 
 export PATH=$PATH:~/.bin
+# asdf settings
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 # Created by `pipx` on 2023-03-03 10:26:34
 export PATH="$PATH:/Users/imanau/.local/bin"
