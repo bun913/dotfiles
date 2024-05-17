@@ -1,11 +1,22 @@
 # Amazon Q pre block. Keep at the top of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
+
+export PATH=$PATH:~/.bin
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+# Created by `pipx` on 2023-03-03 10:26:34
+export PATH="$PATH:/Users/imanau/.local/bin"
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+# p10k pretty terminal
+# echo "source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
 
 # Q pre block. Keep at the top of this file.
 # Copliot cli
@@ -14,8 +25,6 @@ eval "$(github-copilot-cli alias -- "$0")"
 eval "$(zoxide init zsh)"
 # VSCodeエディタでの設定
 bindkey -e
-# p10k pretty terminal
-echo "source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
 # エディターをnvimに設定
 export EDITOR=nvim
 export VISUAL=nvim
@@ -92,15 +101,6 @@ _fzf_comprun() {
   esac
 }
 
-export PATH=$PATH:~/.bin
-
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
-
-
-
-# Created by `pipx` on 2023-03-03 10:26:34
-export PATH="$PATH:/Users/imanau/.local/bin"
-
 # TeamsのURLをシークレットモードで開き自動入力を済ませる
 teams() {
   node ~/workspace/raycast-teams-mtg-on-secret-window/dist/app.js "$1"
@@ -122,26 +122,6 @@ function ide() {
 # fzf-git install
 source ~/fzf-git.sh/fzf-git.sh
 
-# p10k
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+
