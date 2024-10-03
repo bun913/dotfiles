@@ -1,0 +1,10 @@
+{
+  "plugins": {},
+  "filters": {},
+  "rules": {
+    "aws-service-name": true,
+    "preset-ja-technical-writing": {
+      "ja-no-weak-phrase": false
+    }
+  }
+}
