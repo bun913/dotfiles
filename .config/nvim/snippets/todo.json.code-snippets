@@ -1,0 +1,8 @@
+{
+  "Insert Today's Date": {
+    "prefix": "@today",
+    "body": "${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+    "description": "Insert Today's Date",
+    "scope": "TODO"
+  }
+}

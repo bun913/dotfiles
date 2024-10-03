@@ -1,14 +1,17 @@
 node_modules/
 .DS_Store
+gitconfig
 session.json
 config.json
 config/karabiner/automatic_backups/
 AWSVPNCLIENT
 configstore
-config/karabiner/assets/complex_modifications
-config/mume
-config/nvim/plugin/packer_compiled.lua
+.config/karabiner/assets/complex_modifications
+.config/mume
+.config/nvim/plugin/packer_compiled.lua
 
-config/lazygit/state.yml
-config/gh
-config/htop
+.config/lazygit/state.yml
+.config/gh
+.config/htop
+.config/github-copilot
+
