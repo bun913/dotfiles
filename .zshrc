@@ -1,27 +1,8 @@
-# Amazon Q pre block. Keep at the top of this file.
-# [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
-
-export PATH=$PATH:~/.bin
 # asdf settings
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 # Created by `pipx` on 2023-03-03 10:26:34
 export PATH="$PATH:/Users/imanau/.local/bin"
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-# p10k pretty terminal
-# echo "source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
-
-# Q pre block. Keep at the top of this file.
-# Copliot cli
-eval "$(github-copilot-cli alias -- "$0")"
 # ---- Zoxide (better cd) ----
 eval "$(zoxide init zsh)"
 # VSCodeエディタでの設定
@@ -30,18 +11,6 @@ bindkey -e
 export EDITOR=nvim
 export VISUAL=nvim
 # プラグイン
-source ~/.zplug/init.zsh
-zplug "zsh-users/zsh-syntax-highlighting"
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions"
-
-if ! zplug check --verbose; then
-    printf 'Install? [y/N]: '
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-zplug load
 
 # alias系
 alias tf=terraform
@@ -49,7 +18,6 @@ alias k=kubectl
 alias vim=nvim
 alias python=python3
 # # ---- Eza (better ls) -----
-alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 alias cd="z"
 alias c=clear
 alias d=docker
@@ -102,27 +70,12 @@ _fzf_comprun() {
   esac
 }
 
-# TeamsのURLをシークレットモードで開き自動入力を済ませる
-teams() {
-  node ~/workspace/raycast-teams-mtg-on-secret-window/dist/app.js "$1"
-}
-
-function ide() {
-  # 左右半分にする
-  tmux split-window -h
-  # 右側にシェルを分割
-  tmux select-pane -t 1
-  tmux split-window -v
-  tmux select-pane -t 3
-  tmux clock-mode
-  tmux select-pane -t 0
-}
-
-
 # Q post block. Keep at the bottom of this file.
 # fzf-git install
 source ~/fzf-git.sh/fzf-git.sh
 
 # Amazon Q post block. Keep at the bottom of this file.
 # [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
+
+export DAGGER_CLOUD_TOKEN=dag_bun913_WiGcEc_YtWdfHF3xczRx5rkC_MmXxrI0Zgp8faB-q5Y
 
