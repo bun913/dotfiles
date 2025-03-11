@@ -22,7 +22,9 @@ vim.api.nvim_create_user_command('ConvertTask', function()
   -- 新しいファイルを作成
   local file = io.open(file_path, 'w')
   if file then
-    file:write('# ' .. task_title .. '\n')
+    file:write('# ' .. task_title .. '\n\n')
+    file:write('## Reference\n\n')
+    file:write('## Material\n\n')
     file:close()
     print('File created: ' .. file_path)
   else
