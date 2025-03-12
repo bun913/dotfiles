@@ -3,7 +3,7 @@ vim.api.nvim_create_user_command('ConvertTask', function()
   local line = vim.api.nvim_get_current_line()
 
   -- タスクのタイトルを抽出
-  local task_title = line:match '%- %[[ xxl]%] (.+)'
+  local task_title = line:match '%- %[[ x]%] (.+)'
   if not task_title then
     print 'No valid task found on the current line.'
     return
@@ -16,15 +16,17 @@ vim.api.nvim_create_user_command('ConvertTask', function()
     return
   end
 
-  -- 新しいファイルのパスを作成
-  local file_path = './tasks/' .. file_name .. '.md'
+  -- ディレクトリが存在しない場合は作成
+  local dir_path = './tasks/'
+  vim.fn.mkdir(dir_path, 'p')
 
   -- 新しいファイルを作成
+  local file_path = dir_path .. file_name .. '.md'
   local file = io.open(file_path, 'w')
   if file then
     file:write('# ' .. task_title .. '\n\n')
-    file:write('## Reference\n\n')
-    file:write('## Material\n\n')
+    file:write '## Reference\n\n'
+    file:write '## Artifact\n\n'
     file:close()
     print('File created: ' .. file_path)
   else
@@ -67,7 +69,7 @@ vim.api.nvim_create_user_command('ArchiveTask', function()
 
   -- リンクのファイルパスを抽出
   local file_path = line:match '%((.-)%)'
-  
+
   if file_path then
     -- リンク付きタスクの場合
     -- ファイル名を抽出
@@ -88,10 +90,10 @@ vim.api.nvim_create_user_command('ArchiveTask', function()
       -- 現在の行のリンクを新しいパスに更新して完了状態にする
       local new_line = line:gsub('%((.-)%)', '(' .. new_file_path .. ')')
       new_line = new_line:gsub('%- %[ ?%]', '- [x]')
-      
+
       -- 行を更新（リンク付きタスクの場合は行を残す）
       vim.api.nvim_set_current_line(new_line)
-      print('Task archived and link updated')
+      print 'Task archived and link updated'
     else
       print 'Failed to move file.'
     end
@@ -106,26 +108,26 @@ vim.api.nvim_create_user_command('ArchiveTask', function()
 
     -- misc.mdのパスを作成
     local misc_file_path = archive_dir .. '/misc.md'
-    
+
     -- misc.mdが存在するかチェック
     local misc_file_exists = vim.fn.filereadable(misc_file_path) == 1
-    
+
     -- misc.mdを開く（存在しない場合は新規作成）
     local misc_file = io.open(misc_file_path, 'a+')
     if not misc_file then
       print('Failed to open or create file: ' .. misc_file_path)
       return
     end
-    
+
     -- ファイルが新規作成された場合はヘッダーを追加
     if not misc_file_exists then
       misc_file:write('# ' .. date .. ' misc tasks\n\n')
     end
-    
+
     -- ファイルの最後にタスクを追加（常に完了状態で追加）
     misc_file:write('- [x] ' .. task_text .. '\n')
     misc_file:close()
-    
+
     -- 現在のバッファから行を直接削除（完了状態への更新なし）
     vim.api.nvim_buf_set_lines(0, current_line_num - 1, current_line_num, false, {})
     print('Task archived to: ' .. misc_file_path .. ' and removed from original file')
